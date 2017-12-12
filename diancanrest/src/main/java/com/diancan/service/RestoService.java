@@ -1,4 +1,10 @@
 package com.diancan.service;
 
-public class RestoService {
+import com.diancan.domain.RestoBasicInfo;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RestoService {
+    void save(RestoBasicInfo restoBasicInfo);
+    RestoBasicInfo findRestoById(Integer id);
 }

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/restinfo")
+@RequestMapping(value = "/restoinfo")
 public class RestoController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
