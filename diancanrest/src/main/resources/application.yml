@@ -1,7 +1,3 @@
-server:
-  port: 9058
-  context-path: /diancan
 spring:
-   data:
-   mongodb:
-      url: 
+  profiles:
+    active: dev

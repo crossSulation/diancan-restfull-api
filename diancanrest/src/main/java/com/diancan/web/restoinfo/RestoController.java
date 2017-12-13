@@ -1,6 +1,6 @@
-package com.diancan.web;
+package com.diancan.web.restoinfo;
 
-import com.diancan.domain.RestoBasicInfo;
+import com.diancan.domain.restoinfo.RestoBasicInfo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,10 +1,11 @@
-package com.diancan.service;
+package com.diancan.service.resto;
 
-import com.diancan.domain.RestoBasicInfo;
-import com.diancan.domain.RestoBasicInfoRepository;
+import com.diancan.domain.restoinfo.RestoBasicInfo;
+import com.diancan.domain.restoinfo.RestoBasicInfoRepository;
+import com.diancan.service.resto.RestoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class RestoServiceImpl implements RestoService{
+public class RestoServiceImpl implements RestoService {
 
     @Autowired
     private RestoBasicInfoRepository restoBasicInfoRepository;

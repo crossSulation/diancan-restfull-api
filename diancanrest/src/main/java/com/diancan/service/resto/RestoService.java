@@ -1,6 +1,6 @@
-package com.diancan.service;
+package com.diancan.service.resto;
 
-import com.diancan.domain.RestoBasicInfo;
+import com.diancan.domain.restoinfo.RestoBasicInfo;
 import org.springframework.stereotype.Repository;
 
 @Repository

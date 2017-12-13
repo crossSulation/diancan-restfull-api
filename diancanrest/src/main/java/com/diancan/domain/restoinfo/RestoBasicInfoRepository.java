@@ -1,8 +1,7 @@
-package com.diancan.domain;
+package com.diancan.domain.restoinfo;
 
+import com.diancan.domain.restoinfo.RestoBasicInfo;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 public interface RestoBasicInfoRepository extends MongoRepository<RestoBasicInfo,Integer>{
 }
