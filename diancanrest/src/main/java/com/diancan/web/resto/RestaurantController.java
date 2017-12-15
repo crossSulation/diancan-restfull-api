@@ -7,15 +7,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/restoinfo")
-public class RestoController {
+public class RestaurantController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Restaurant getRestBasicInfoById(@PathVariable long id) {
+    public Restaurant getRestaurantById(@PathVariable long id) {
 
         return  null;
     }
     @RequestMapping(method = RequestMethod.GET)
-    public List<Restaurant> getAllRestoBasicInfos() {
+    public List<Restaurant> getAllRestaurants() {
         return  null;
     }
     @RequestMapping(method = RequestMethod.POST)
@@ -25,7 +25,7 @@ public class RestoController {
         return  false;
     }
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
-    public boolean delOneRestoBasicInfoById(@PathVariable long id) {
+    public boolean delOneRestaurantById(@PathVariable long id) {
         return  false;
     }
 }
