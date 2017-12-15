@@ -1,32 +1,52 @@
-package com.diancan.domain.restoinfo;
+package com.diancan.domain.resto;
 
 import com.sun.jndi.toolkit.url.Uri;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
-public class RestoBasicInfo implements Serializable {
+public class Restaurant implements Serializable {
     private static final long serialVersionUID = -3258839839160856613L;
     @Id
     @GeneratedValue
     private Integer id;
+    //the Image info of the resto
     private Uri restoImage;
+    //the contact
     private String contactor;
+    //resto address
     private String restoAddress;
+    //resto dialnumber
     private String restodialnumber;
-    private String RestoName;
-    public RestoBasicInfo() {
+    //rest name
+    private String restoName;
+    // the rating star
+    private Integer rating;
+
+    @OneToMany
+    private List<RestTable> tables;
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public Restaurant() {
     }
 
     public String getRestoName() {
-        return RestoName;
+        return restoName;
     }
 
     public void setRestoName(String restoName) {
-        RestoName = restoName;
+        restoName = restoName;
     }
 
     public Uri getRestoImage() {

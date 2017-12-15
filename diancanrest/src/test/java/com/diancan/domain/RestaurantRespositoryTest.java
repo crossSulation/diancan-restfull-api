@@ -3,7 +3,7 @@ package com.diancan.domain;
 import org.junit.*;
 
 
-public class RestoBasicInfoRespositoryTest {
+public class RestaurantRespositoryTest {
 
     @Test
     public  void getRestoBasicInfo() {

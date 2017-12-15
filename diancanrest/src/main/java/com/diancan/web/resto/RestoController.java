@@ -1,6 +1,6 @@
-package com.diancan.web.restoinfo;
+package com.diancan.web.resto;
 
-import com.diancan.domain.restoinfo.RestoBasicInfo;
+import com.diancan.domain.resto.Restaurant;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +10,12 @@ import java.util.List;
 public class RestoController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public RestoBasicInfo getRestBasicInfoById(@PathVariable long id) {
+    public Restaurant getRestBasicInfoById(@PathVariable long id) {
 
         return  null;
     }
     @RequestMapping(method = RequestMethod.GET)
-    public List<RestoBasicInfo> getAllRestoBasicInfos() {
+    public List<Restaurant> getAllRestoBasicInfos() {
         return  null;
     }
     @RequestMapping(method = RequestMethod.POST)
