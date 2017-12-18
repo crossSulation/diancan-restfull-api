@@ -1,5 +1,7 @@
 package com.diancan.domain.resto.metadata;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,12 +14,17 @@ public class City {
     private List<County> counties;
     @OneToOne
     private Province province;
+    @Nullable
     private String nameCN;
+    @Nullable
     private String nameEN;
     private String name;
+    @Nullable
     private String zipCode;
     private String desc;
+    @Nullable
     private String descCN;
+    @Nullable
     private String descEN;
 
     public City() {

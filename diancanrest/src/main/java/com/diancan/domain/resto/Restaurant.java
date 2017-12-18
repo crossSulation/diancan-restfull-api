@@ -1,10 +1,9 @@
 package com.diancan.domain.resto;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.diancan.domain.resto.metadata.Address;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,7 +18,8 @@ public class Restaurant implements Serializable {
     //the contact
     private String contactor;
     //resto address
-    private String restoAddress;
+    @OneToOne
+    private Address restoAddress;
     //resto dialnumber
     private String restodialnumber;
     //rest name
@@ -65,11 +65,11 @@ public class Restaurant implements Serializable {
         this.contactor = contactor;
     }
 
-    public String getRestoAddress() {
+    public Address getRestoAddress() {
         return restoAddress;
     }
 
-    public void setRestoAddress(String restoAddress) {
+    public void setRestoAddress(Address restoAddress) {
         this.restoAddress = restoAddress;
     }
 
