@@ -1,7 +1,5 @@
 package com.diancan.domain.resto.metadata;
 
-import com.sun.istack.internal.Nullable;
-
 import javax.persistence.*;
 import java.util.List;
 
