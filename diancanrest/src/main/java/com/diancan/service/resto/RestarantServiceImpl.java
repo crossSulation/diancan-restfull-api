@@ -3,15 +3,17 @@ package com.diancan.service.resto;
 import com.diancan.domain.resto.Restaurant;
 import com.diancan.respositorys.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RestarantServiceImpl implements RestarantService {
 
     @Autowired
     RestaurantRepository restaurantRepository;
     @Override
-    public Restaurant findRestaurantById(Integer id) {
+    public Restaurant findRestaurantById(long id) {
         return restaurantRepository.findOne(id);
     }
 
@@ -21,7 +23,7 @@ public class RestarantServiceImpl implements RestarantService {
     }
 
     @Override
-    public void delRestaurantById(Integer id) {
+    public void delRestaurantById(long id) {
          restaurantRepository.delete(id);
     }
 

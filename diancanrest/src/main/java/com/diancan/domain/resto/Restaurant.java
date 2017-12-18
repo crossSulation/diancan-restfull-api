@@ -46,7 +46,7 @@ public class Restaurant implements Serializable {
     }
 
     public void setRestoName(String restoName) {
-        restoName = restoName;
+        this.restoName = restoName;
     }
 
     public String getRestoImage() {

@@ -5,16 +5,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface RestarantService {
 
-    Restaurant findRestaurantById(Integer id);
+    Restaurant findRestaurantById(long id);
 
     List<Restaurant> findRestaurantByGivenAdress(String address);
 
     List<Restaurant> findRestaurantByGivenRating(Integer rating);
 
-    void delRestaurantById(Integer id);
+    void delRestaurantById(long id);
 
     Restaurant addNewRestaurant(Restaurant restaurant);
 
