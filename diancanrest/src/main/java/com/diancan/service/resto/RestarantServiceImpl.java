@@ -1,6 +1,7 @@
 package com.diancan.service.resto;
 
 import com.diancan.domain.resto.Restaurant;
+import com.diancan.domain.resto.metadata.Province;
 import com.diancan.respositorys.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class RestarantServiceImpl implements RestarantService {
     }
 
     @Override
-    public List<Restaurant> findRestaurantByGivenAdress(String address) {
-        return restaurantRepository.findRestaurantsByRestoAddressContains(address);
+    public List<Restaurant> findRestaurantByGivenAdressProvince(Province province) {
+        return restaurantRepository.findRestaurantsByAddress_Province(province);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.diancan.service.resto;
 
 import com.diancan.domain.resto.Restaurant;
+import com.diancan.domain.resto.metadata.Province;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface RestarantService {
 
     Restaurant findRestaurantById(long id);
 
-    List<Restaurant> findRestaurantByGivenAdress(String address);
+    List<Restaurant> findRestaurantByGivenAdressProvince(Province province);
 
     List<Restaurant> findRestaurantByGivenRating(Integer rating);
 

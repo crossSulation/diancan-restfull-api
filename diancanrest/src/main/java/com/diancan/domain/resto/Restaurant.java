@@ -19,7 +19,7 @@ public class Restaurant implements Serializable {
     private String contactor;
     //resto address
     @OneToOne
-    private Address restoAddress;
+    private Address address;
     //resto dialnumber
     private String restodialnumber;
     //rest name
@@ -66,11 +66,11 @@ public class Restaurant implements Serializable {
     }
 
     public Address getRestoAddress() {
-        return restoAddress;
+        return address;
     }
 
-    public void setRestoAddress(Address restoAddress) {
-        this.restoAddress = restoAddress;
+    public void setRestoAddress(Address address) {
+        this.address = address;
     }
 
     public String getRestodialnumber() {
