@@ -2,6 +2,7 @@ package com.diancan.domain.resto.metadata;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,10 @@ public class Address {
     private String longitude; //经度
     private String latitude;// 纬度
     private String desc;
+    @Column()
     private String descCN;
+    @Column()
+    private String descEN;
 
     public String getLongitude() {
         return longitude;
@@ -65,7 +69,9 @@ public class Address {
         this.descEN = descEN;
     }
 
-    private String descEN;
+    private String descEN() {
+        return this.descCN;
+    }
     public Address() {
     }
 

@@ -14,17 +14,17 @@ public class City {
     private List<County> counties;
     @OneToOne
     private Province province;
-    @Nullable
+    @Column()
     private String nameCN;
-    @Nullable
+    @Column()
     private String nameEN;
     private String name;
-    @Nullable
+    @Column()
     private String zipCode;
     private String desc;
-    @Nullable
+    @Column()
     private String descCN;
-    @Nullable
+    @Column()
     private String descEN;
 
     public City() {
