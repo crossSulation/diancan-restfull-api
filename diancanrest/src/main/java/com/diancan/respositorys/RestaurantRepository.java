@@ -1,5 +1,6 @@
-package com.diancan.domain.resto;
+package com.diancan.respositorys;
 
+import com.diancan.domain.resto.Restaurant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

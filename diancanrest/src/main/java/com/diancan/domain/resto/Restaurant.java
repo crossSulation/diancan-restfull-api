@@ -1,6 +1,6 @@
 package com.diancan.domain.resto;
 
-import com.sun.jndi.toolkit.url.Uri;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,9 +13,9 @@ public class Restaurant implements Serializable {
     private static final long serialVersionUID = -3258839839160856613L;
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     //the Image info of the resto
-    private Uri restoImage;
+    private String restoImage;
     //the contact
     private String contactor;
     //resto address
@@ -49,11 +49,11 @@ public class Restaurant implements Serializable {
         restoName = restoName;
     }
 
-    public Uri getRestoImage() {
+    public String getRestoImage() {
         return restoImage;
     }
 
-    public void setRestoImage(Uri restoImage) {
+    public void setRestoImage(String restoImage) {
         this.restoImage = restoImage;
     }
 

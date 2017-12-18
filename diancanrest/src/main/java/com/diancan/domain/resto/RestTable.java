@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import java.util.Date;
 
 // 餐桌
-@Entity
+@Entity(name="rest_table")
 public class RestTable {
     @Id
     @GeneratedValue

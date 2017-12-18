@@ -1,4 +1,4 @@
-package com.diancan.web.resto;
+package com.diancan.web.resto.controllers;
 
 import com.diancan.domain.resto.Restaurant;
 import org.springframework.web.bind.annotation.*;

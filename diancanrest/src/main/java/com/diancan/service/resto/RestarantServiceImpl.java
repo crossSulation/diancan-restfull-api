@@ -1,7 +1,7 @@
 package com.diancan.service.resto;
 
 import com.diancan.domain.resto.Restaurant;
-import com.diancan.domain.resto.RestaurantRepository;
+import com.diancan.respositorys.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

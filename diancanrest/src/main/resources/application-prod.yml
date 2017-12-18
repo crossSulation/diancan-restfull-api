@@ -2,24 +2,24 @@ server:
    port: 8081
    context-path: /diancan
    session:
-        timeout: 20
-  tomcat:
-        uri-encoding: UTF-8
+     timeout: 20
+   tomcat:
+     uri-encoding: UTF-8
 # datasource
 spring:
   datasource:
-          url: jdbc://localhost:3306/diancan
+    url: jdbc:mysql://localhost:3306/diancan
     username: root
     password: 123qweASD
-    name: mysql
     driver-class-name: com.mysql.jdbc.Driver
+    name: diancan
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      uri: mongod://localhost:27017/logging
+      uri: mongodb://127.0.0.1:27017
+      database: logging
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
 
