@@ -7,7 +7,7 @@ import java.util.List;
 public class County {
     @Id
     @GeneratedValue
-    private  id;Long
+    private  Long id;
     private String code;
     private String name;
     private String nameCN;

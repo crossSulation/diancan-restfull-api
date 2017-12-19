@@ -1,0 +1,33 @@
+package com.diancan.service.resto.metadata;
+
+import com.diancan.domain.resto.metadata.Province;
+import com.diancan.respositorys.metadata.ProvinceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class ProvinceServiceImpl implements  ProvinceService {
+
+    @Autowired
+    ProvinceRepository provinceRepository;
+
+    @Override
+    public Province findOneByGivenId(Long id) {
+        return provinceRepository.findOne(id);
+    }
+
+    @Override
+    public List<Province> findMultipleByGivenName(String name) {
+        return provinceRepository.findProvincesByNameLike(name);
+    }
+
+    @Override
+    public List<Province> findMultipleByGivenDesc(String desc) {
+        return provinceRepository.findProvincesByDescLike(desc);
+    }
+
+    @Override
+    public List<Province> findMultipleByGivenCode(String code) {
+        return provinceRepository.findProvincesByCodeLike(code);
+    }
+}

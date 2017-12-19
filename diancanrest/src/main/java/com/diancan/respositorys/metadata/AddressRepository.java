@@ -23,12 +23,10 @@ public interface AddressRepository extends JpaRepository<Address,Long>{
 
     List<Address> findAddressesByLongitude(String longitude);
 
-    List<Address> findAddressByDescContains(String desc);
+    List<Address> findAddressesByDescContains(String desc);
 
     List<Address> findAddressesByPartitionLike(String partition);
 
-    Street findAddressByLatitudeAndLongitude(String latitude,String longitude);
-
-
+    Address findAddressByLatitudeAndLongitude(String latitude,String longitude);
 
 }

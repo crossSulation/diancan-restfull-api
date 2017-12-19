@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html {
+            font-size: 100px;
+            box-sizing: border-box;
+        }
+        .errorMsgContainer {
+            position: absolute;
+            width: 2rem;
+            height:3rem;
+            top: 20%;
+            left:-50%;
+            transform: translateX(50%);
+        }
+        .errorMsgLogo {
+            float: left;
+            width:0.5rem;
+            height: 100%;
+            border: none;
+        }
+        .erroMsgContent {
+            width:1.5rem;
+            border: none;
+        }
+        .erroMsgContent > span {
+            font-size: medium;
+        }
+        .clearfix {
+            clear:both;
+        }
+    </style>
+    <title>404</title>
+</head>
+<body>
+  <div class="errorMsgContainer">
+      <div class="errorMsgLogo">
+          <img src="#">
+      </div>
+      <div class="erroMsgContent">
+          <span>The Resource is not available!</span>
+      </div>
+      <div class="clearfix"></div>
+  </div>
+</body>
+</html>
