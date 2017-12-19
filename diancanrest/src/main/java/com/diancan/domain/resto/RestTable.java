@@ -9,9 +9,9 @@ import java.util.Date;
 // 餐桌
 @Entity(name="rest_table")
 public class RestTable {
-    @IdLong
+    @Id
     @GeneratedValue
-    private  id; //
+    private  Long id; //
 
     private Integer num; // 编号
     private Integer maxPeople; //最大顾客人数

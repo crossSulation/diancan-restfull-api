@@ -2,7 +2,6 @@ package com.diancan.respositorys.metadata;
 
 import com.diancan.domain.resto.metadata.Street;
 import com.diancan.domain.resto.metadata.Town;
-import com.sun.xml.internal.stream.events.StartElementEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

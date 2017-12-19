@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue
-    private  id; // 主键Long
+    private  Long id; // 主键
     @OneToOne
     private  Province province;//
     @OneToOne
