@@ -7,7 +7,7 @@ import java.util.List;
 public class Town {
     @Id
     @GeneratedValue
-    private Integer id;
+    private  Long id;
     private String name;
     private String nameCN;
     private String code;
