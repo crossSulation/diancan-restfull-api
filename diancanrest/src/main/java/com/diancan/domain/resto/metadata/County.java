@@ -8,6 +8,7 @@ public class County {
     @Id
     @GeneratedValue
     private  Long id;
+    @Column(nullable = false,length = 10)
     private String code;
     private String name;
     private String nameCN;
@@ -16,19 +17,8 @@ public class County {
     private String descCN;
     private String descEN;
 
-    @OneToMany
+    @OneToMany(mappedBy = "county")
     private List<Town> towns;
-
-    @OneToOne
-    private City city;
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
 
     public County() {
     }

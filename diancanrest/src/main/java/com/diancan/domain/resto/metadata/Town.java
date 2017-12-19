@@ -10,12 +10,14 @@ public class Town {
     private  Long id;
     private String name;
     private String nameCN;
+
+    @Column(nullable = false,length = 10)
     private String code;
+
     private String nameEN;
-    @OneToMany
+
+    @OneToMany(mappedBy = "town")
     private List<Street> streets;
-    @OneToOne
-    private County county;
     private String desc;
     private String descCN;
     private String descEN;
