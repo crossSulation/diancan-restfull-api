@@ -13,7 +13,7 @@ public class GlobalException {
 
     @ExceptionHandler(value =Exception.class)
     @ResponseBody
-    public  void defaultHandle(ServletRequest request, ServletResponse response,Exception e) {
+    public  ResponseErroMsg defaultHandle(ServletRequest request, ServletResponse response,Exception e) {
 
         ResponseErroMsg erroMsg =new ResponseErroMsg();
         if(e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
@@ -25,5 +25,6 @@ public class GlobalException {
             erroMsg.setHttpStatus(HttpStatus.INNER_SERVER_ERROR);
             erroMsg.setMessage(e.getLocalizedMessage());
         }
+        return  erroMsg;
     }
 }

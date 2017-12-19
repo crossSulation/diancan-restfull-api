@@ -6,10 +6,19 @@ public class ResponseErroMsg extends   RuntimeException{
     private Integer code;
     private HttpStatus httpStatus;
     private String message;
+    private String path;
 
     public ResponseErroMsg() {
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
     public Integer getCode() {
         return code;
     }

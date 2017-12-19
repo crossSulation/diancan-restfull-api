@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 public class Street {
     @Id
     @GeneratedValue
-    private Integer id;
+    private  Long id;
     private String name;
     private String nameCN;
     private String nameEN;

@@ -10,7 +10,7 @@ import java.util.List;
 public class Province {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String  code;
     @OneToMany
     private List<City> cities;

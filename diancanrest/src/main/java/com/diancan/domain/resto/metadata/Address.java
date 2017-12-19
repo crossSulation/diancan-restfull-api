@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue
-    private Integer id; // 主键
+    private  id; // 主键Long
     @OneToOne
     private  Province province;//
     @OneToOne
@@ -28,6 +28,9 @@ public class Address {
     private String desc;
     private String descCN;
     private String descEN;
+
+    public Address() {
+    }
 
     public String getLongitude() {
         return longitude;
@@ -71,8 +74,6 @@ public class Address {
 
     private String descEN() {
         return this.descCN;
-    }
-    public Address() {
     }
 
     public Province getProvince() {

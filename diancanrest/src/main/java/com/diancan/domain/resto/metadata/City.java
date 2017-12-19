@@ -7,7 +7,7 @@ import java.util.List;
 public class City {
     @Id
     @GeneratedValue
-    private Integer id;
+    private  long id;
     @OneToMany
     private List<County> counties;
     @OneToOne
