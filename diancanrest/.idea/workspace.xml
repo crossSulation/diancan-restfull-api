@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21cb8812-797f-484e-adc7-5b839d83676f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/AddressService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/AddressServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/CityService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/CityServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/CountyService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/CountyServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/ProvinceService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/ProvinceServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/StreetService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/StreetServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/TownService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/TownServiceImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/public/error/404.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/metadata/County.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/metadata/County.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/respositorys/metadata/AddressRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/respositorys/metadata/AddressRepository.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/error/GlobalException.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/error/GlobalException.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/error/ResponseErroMsg.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/error/ResponseErroMsg.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/GlobalExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/GlobalExceptionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/ResponseData.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/web/resto/utils/HttpStatus.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkCategory.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkCategory.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkTeste.java" afterPath="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkTeste.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,64 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProvinceService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/ProvinceService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="56" lean-forward="false" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountyServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/CountyServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="62" lean-forward="true" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#511#512#0" expanded="true" />
-                <element signature="e#587#588#0" expanded="true" />
-                <element signature="e#651#652#0" expanded="true" />
-                <element signature="e#797#798#0" expanded="true" />
-                <element signature="e#875#876#0" expanded="true" />
-                <element signature="e#943#944#0" expanded="true" />
-                <element signature="e#1021#1022#0" expanded="true" />
-                <element signature="e#1089#1090#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountyService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/CountyService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="54" lean-forward="false" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProvinceServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/ProvinceServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="47" lean-forward="true" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#481#482#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StreetService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/StreetService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -174,13 +97,64 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityRepository.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CityRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/respositorys/metadata/CityRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrinkCategory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkCategory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
+              <folding>
+                <element signature="e#386#387#0" expanded="true" />
+                <element signature="e#420#421#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GlobalExceptionHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/GlobalExceptionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpStatus.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/http/HttpStatus.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="146" column="5" lean-forward="true" selection-start-line="134" selection-start-column="4" selection-end-line="146" selection-end-column="5" />
+              <folding>
+                <element signature="e#3814#3815#0" expanded="true" />
+                <element signature="e#3847#3848#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DrinkTeste.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkTeste.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+              <folding>
+                <element signature="e#311#312#0" expanded="true" />
+                <element signature="e#345#346#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -216,8 +190,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/respositorys/AddressRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/metadata/Address.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/metadata/Town.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkCategory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkTeste.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/RestTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/respositorys/MealRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/respositorys/RestTableRepository.java" />
@@ -260,6 +232,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/ProvinceServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/StreetServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/diancan/service/resto/metadata/TownServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkCategory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkTeste.java" />
       </list>
     </option>
   </component>
@@ -382,7 +356,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="diancan" type="462c0819:PsiDirectoryNode" />
               <item name="resto" type="462c0819:PsiDirectoryNode" />
-              <item name="metadata" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="diancan-rest" type="b2602c69:ProjectViewProjectNode" />
@@ -699,7 +673,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50191000" />
+    <option name="totallyTimeSpent" value="51054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="253" y="46" width="1400" height="964" extended-state="0" />
@@ -777,26 +751,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/respositorys/MealRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="63" lean-forward="false" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/respositorys/RestTableRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="76" lean-forward="true" selection-start-line="5" selection-start-column="76" selection-end-line="5" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/web/resto/controllers/metadata/AddressController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -931,51 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/http/HttpStatus.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="99" column="25" lean-forward="false" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="25" />
-          <folding>
-            <marker date="1513325355869" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1513325355869" expanded="true" signature="833:851" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="993:1011" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="1769:1787" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="1910:1928" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="2231:2249" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="2345:2363" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="2427:2445" ph="/**...*/" />
-            <marker date="1513325355869" expanded="true" signature="3712:3789" ph="{...}" />
-            <marker date="1513325355869" expanded="true" signature="3813:3824" ph=" { " />
-            <marker date="1513325355869" expanded="true" signature="3842:3848" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="3885:3896" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="3921:3927" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="3968:3979" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4040:4046" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="4084:4095" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4153:4159" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="4198:4209" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4268:4274" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="4313:4324" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4384:4390" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="4429:4440" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4500:4506" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="4545:4556" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4595:4601" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="4631:4642" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="4678:4684" ph=" }" />
-            <marker date="1513325355869" expanded="true" signature="4739:5105" ph="{...}" />
-            <marker date="1513325355869" expanded="true" signature="5137:6094" ph="{...}" />
-            <marker date="1513325355869" expanded="false" signature="5330:5345" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="5364:5374" ph=" }" />
-            <marker date="1513325355869" expanded="false" signature="5402:5417" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="5435:5445" ph=" }" />
-            <marker date="1513325355869" expanded="true" signature="5507:5966" ph="{...}" />
-            <marker date="1513325355869" expanded="false" signature="6034:6049" ph=" { " />
-            <marker date="1513325355869" expanded="false" signature="6078:6088" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/ResponseData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1087,16 +996,6 @@
         <state relative-caret-position="39">
           <caret line="76" column="18" lean-forward="true" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/GlobalExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1403,10 +1302,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/respositorys/metadata/CityRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/web/resto/exception/GlobalExceptionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.7.RELEASE/spring-web-4.3.7.RELEASE.jar!/org/springframework/http/HttpStatus.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="146" column="5" lean-forward="true" selection-start-line="134" selection-start-column="4" selection-end-line="146" selection-end-column="5" />
+          <folding>
+            <element signature="e#3814#3815#0" expanded="true" />
+            <element signature="e#3847#3848#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkCategory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="e#386#387#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/diancan/domain/resto/constants/DrinkTeste.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
           </folding>
         </state>
       </provider>
