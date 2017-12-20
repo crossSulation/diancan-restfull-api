@@ -9,7 +9,7 @@ public interface CountyService {
 
     County findOneByGivenId(Long id);
 
-    List<County> findMultipleByGivenCity(City city);
+    List<County> findMultipleByGivenCity(Long cityId);
 
     List<County> findMultipleByGivenName(String name);
 

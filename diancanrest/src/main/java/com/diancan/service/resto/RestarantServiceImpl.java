@@ -19,8 +19,8 @@ public class RestarantServiceImpl implements RestarantService {
     }
 
     @Override
-    public List<Restaurant> findRestaurantByGivenAdressProvince(Province province) {
-        return restaurantRepository.findRestaurantsByAddress_Province(province);
+    public List<Restaurant> findRestaurantByGivenAdressProvince(Long provinceId) {
+        return restaurantRepository.findRestaurantsByAddress_ProvinceId(provinceId);
     }
 
     @Override

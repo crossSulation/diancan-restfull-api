@@ -18,8 +18,8 @@ public class CityServiceImpl implements  CityService {
     }
 
     @Override
-    public List<City> findMultipleByGivenProvince(Province province) {
-        return cityRepository.findCitiesByProvince(province);
+    public List<City> findMultipleByGivenProvince(Long provinceId) {
+        return cityRepository.findCitiesByProvinceId(provinceId);
     }
 
     @Override

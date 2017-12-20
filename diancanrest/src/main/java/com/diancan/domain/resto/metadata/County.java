@@ -1,6 +1,7 @@
 package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,39 +11,46 @@ import java.util.Set;
 public class County {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "county_id")
-    private  Long id;
+    private  Long countyId;
+
     @Column(nullable = false,length = 10)
     private String code;
+
     private String name;
+
     private String nameCN;
+
     private String nameEN;
+
     private String desc;
+
     private String descCN;
+
     private String descEN;
 
-    private Set<Town> towns;
+    @OneToMany(mappedBy = "countyId",cascade = CascadeType.ALL,targetEntity = Town.class,fetch = FetchType.LAZY)
+    private Set<Town> towns =new HashSet<>();
 
-    @ManyToOne()
-    @JoinColumn(name = "city_county_id")
-    private City city;
+    private Long cityId;
 
-    private Set<Address> addresses;
+    @OneToMany(mappedBy = "countyId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    private Set<Address> addresses = new HashSet<>();
 
     public County() {
     }
 
-    public City getCity() {
-        return city;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
-    @OneToMany(mappedBy = "county",cascade = CascadeType.ALL,targetEntity = Address.class)
-    @JoinTable(name="address_county",joinColumns = {@JoinColumn(name="county_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
     public Set<Address> getAddresses() {
+        for(Address addr : addresses) {
+            addr.setCountyId(countyId);
+        }
         return addresses;
     }
 
@@ -106,9 +114,10 @@ public class County {
         this.descEN = descEN;
     }
 
-    @OneToMany(mappedBy = "county",cascade = CascadeType.ALL,targetEntity = Town.class)
-    @JoinTable(name="county_town",joinColumns = {@JoinColumn(name="county_id")},inverseJoinColumns = {@JoinColumn(name="town_id")})
     public Set<Town> getTowns() {
+        for(Town town : towns) {
+            town.setCountyId(countyId);
+        }
         return towns;
     }
 

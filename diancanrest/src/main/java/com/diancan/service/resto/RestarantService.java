@@ -11,7 +11,7 @@ public interface RestarantService {
 
     Restaurant findRestaurantById(long id);
 
-    List<Restaurant> findRestaurantByGivenAdressProvince(Province province);
+    List<Restaurant> findRestaurantByGivenAdressProvince(Long provinceId);
 
     List<Restaurant> findRestaurantByGivenRating(Integer rating);
 

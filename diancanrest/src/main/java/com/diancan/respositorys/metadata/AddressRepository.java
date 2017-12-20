@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface AddressRepository extends JpaRepository<Address,Long>{
 
-    Address findAddressById(Long id);
+    Address findAddressByAddressId(Long id);
 
-    List<Address> findAddressesByCity(City city);
+    List<Address> findAddressesByCityId(Long id);
 
-    List<Address> findAddressesByProvince(Province province);
+    List<Address> findAddressesByProvinceId(Long id);
 
-    List<Address> findAddressesByCounty(County county);
+    List<Address> findAddressesByCountyId(Long id);
 
-    List<Address> findAddressesByTown(Town town);
+    List<Address> findAddressesByTownId(Long id);
 
-    List<Address> findAddressesByStreet(Street street);
+    List<Address> findAddressesByStreetId(Long id);
 
     List<Address> findAddressesByLatitude(String latitude);
 

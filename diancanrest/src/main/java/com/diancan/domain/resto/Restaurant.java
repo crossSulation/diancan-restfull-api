@@ -5,6 +5,7 @@ import com.diancan.domain.resto.metadata.Address;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,13 +13,14 @@ public class Restaurant implements Serializable {
     private static final long serialVersionUID = -3258839839160856613L;
     @Id
     @GeneratedValue
-    private Long id;
+    private Long restaurantId;
     //the Image info of the resto
     private String restoImage;
     //the contact
     private String contactor;
     //resto address
-    @OneToOne
+    @OneToOne(cascade =  CascadeType.ALL)
+    @JoinColumn(name = "addressId")
     private Address address;
     //resto dialnumber
     private String restodialnumber;
@@ -27,8 +29,8 @@ public class Restaurant implements Serializable {
     // the rating star
     private Integer rating;
 
-    @OneToMany
-    private List<RestTable> tables;
+    @OneToMany(mappedBy = "restaurantId",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<RestTable> tables =new ArrayList<>();
 
     public Integer getRating() {
         return rating;
@@ -39,6 +41,17 @@ public class Restaurant implements Serializable {
     }
 
     public Restaurant() {
+    }
+
+    public List<RestTable> getTables() {
+        for(RestTable restTable : tables) {
+            restTable.setRestaurantId(restaurantId);
+        }
+        return tables;
+    }
+
+    public void setTables(List<RestTable> tables) {
+        this.tables = tables;
     }
 
     public String getRestoName() {
@@ -65,11 +78,11 @@ public class Restaurant implements Serializable {
         this.contactor = contactor;
     }
 
-    public Address getRestoAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setRestoAddress(Address address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

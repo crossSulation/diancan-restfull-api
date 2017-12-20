@@ -18,8 +18,8 @@ public class CountyServiceImpl implements CountyService {
     }
 
     @Override
-    public List<County> findMultipleByGivenCity(City city) {
-        return countyRepository.findCountiesByCity(city);
+    public List<County> findMultipleByGivenCity(Long cityId) {
+        return countyRepository.findCountiesByCityId(cityId);
     }
 
     @Override

@@ -56,14 +56,14 @@ public class RestaurantController {
 
     /**
      *
-     * @param province
+     * @param provinceId
      * @return
      */
     @ApiOperation(value = "根据省份获取餐馆",notes = "",httpMethod = "GET")
-    @ApiImplicitParam(value = "address",name = "address",dataType = "Province",paramType = "Province",required = true)
-    @GetMapping(value = "/{address}",params = "address")
-    public  List<Restaurant> getRestaurantsByGivenAddressProvince(@PathVariable Province province) {
-        return  restarantService.findRestaurantByGivenAdressProvince(province);
+    @ApiImplicitParam(value = "provinceId",name = "provinceId",dataType = "provinceId",paramType = "Long",required = true)
+    @GetMapping(value = "/{provinceId}",params = "provinceId")
+    public  List<Restaurant> getRestaurantsByGivenAddressProvince(@PathVariable Long provinceId) {
+        return  restarantService.findRestaurantByGivenAdressProvince(provinceId);
     }
 
     @ApiOperation(value = "根据评分获取餐馆",notes = "")

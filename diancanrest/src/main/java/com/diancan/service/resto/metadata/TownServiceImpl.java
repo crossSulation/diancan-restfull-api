@@ -19,8 +19,8 @@ public class TownServiceImpl implements TownService {
     }
 
     @Override
-    public List<Town> findMultipleByGivenCounty(County county) {
-        return townRepository.findTownsByCounty(county);
+    public List<Town> findMultipleByGivenCounty(Long countyId) {
+        return townRepository.findTownsByCountyId(countyId);
     }
 
     @Override

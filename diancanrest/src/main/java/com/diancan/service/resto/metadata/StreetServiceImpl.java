@@ -33,7 +33,7 @@ public class StreetServiceImpl implements  StreetService {
     }
 
     @Override
-    public List<Street> findMultipleByGivenTown(Town town) {
-        return streetRepository.findStreetsByTown(town);
+    public List<Street> findMultipleByGivenTown(Long townId) {
+        return streetRepository.findStreetsByTownId(townId);
     }
 }

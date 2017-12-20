@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface StreetRepository extends JpaRepository<Street,Long> {
 
-    Street findOneById(Long id);
+    Street findOneByStreetId(Long id);
 
     List<Street> findStreetsByCodeLike(String code);
 
-    List<Street> findStreetsByTown(Town town);
+    List<Street> findStreetsByTownId(Long townId);
 
     List<Street> findStreetsByNameLike(String name);
 

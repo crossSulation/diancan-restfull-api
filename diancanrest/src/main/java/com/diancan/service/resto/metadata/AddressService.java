@@ -8,13 +8,13 @@ public interface AddressService {
 
     Address  findOneByGivenId(Long id);
 
-    List<Address> findMultipleByGivenProvince(Province province);
+    List<Address> findMultipleByGivenProvince(Long provinceId);
 
-    List<Address> findMultipleByGivenCity(City city);
+    List<Address> findMultipleByGivenCity(Long cityId);
 
-    List<Address> findMultipleByGivenTown(Town town);
+    List<Address> findMultipleByGivenTown(Long townId);
 
-    List<Address> findMultipleByGivenStreet(Street street);
+    List<Address> findMultipleByGivenStreet(Long streetId);
 
     List<Address> findMultipleByGivenLongitude(String longitude);
 
@@ -26,5 +26,5 @@ public interface AddressService {
 
     Address findOneByGivenLatitudeAndLongitude(String latitude,String longitude);
 
-    List<Address> findMultipleByGivenCounty(County county);
+    List<Address> findMultipleByGivenCounty(Long countyId);
 }

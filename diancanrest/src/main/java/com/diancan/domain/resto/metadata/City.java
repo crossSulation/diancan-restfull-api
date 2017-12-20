@@ -1,6 +1,7 @@
 package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,37 +11,39 @@ import java.util.Set;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "city_id")
-    private  long id;
+    private  Long cityId;
 
-    private Set<County> counties;
+    @OneToMany(mappedBy = "cityId",cascade = CascadeType.ALL,targetEntity = County.class,fetch = FetchType.LAZY)
+    private Set<County> counties = new HashSet<County>();
 
-    @ManyToOne
-    @JoinColumn(name = "province_city_id")
-    private Province province;
+    private Long provinceId;
 
-    private Set<Address> addresses;
+    @OneToMany(mappedBy = "cityId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    private Set<Address> addresses =new HashSet<Address>();
 
-    @Column()
     private String nameCN;
-    @Column()
+
     private String nameEN;
+
     @Column(nullable = false,length = 50)
     private String name;
+
     @Column(nullable = false,length = 10)
     private String zipCode;
+
     private String desc;
-    @Column()
+
     private String descCN;
-    @Column()
+
     private String descEN;
 
     public City() {
     }
 
-    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL,targetEntity = Address.class)
-    @JoinTable(name="address_city",joinColumns = {@JoinColumn(name="city_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
     public Set<Address> getAddresses() {
+        for(Address addr: addresses) {
+            addr.setCityId(cityId);
+        }
         return addresses;
     }
 
@@ -48,17 +51,19 @@ public class City {
         this.addresses = addresses;
     }
 
-    public Province getProvince() {
-        return province;
+
+    public Long getProvinceId() {
+        return provinceId;
     }
 
-    public void setProvince(Province province) {
-        this.province = province;
+    public void setProvinceId(Long provinceId) {
+        this.provinceId = provinceId;
     }
 
-    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL,targetEntity = County.class)
-    @JoinTable(name="city_county",joinColumns = {@JoinColumn(name="city_id")},inverseJoinColumns = {@JoinColumn(name="county_id")})
     public Set<County> getCounties() {
+        for(County county : counties) {
+            county.setCityId(cityId);
+        }
         return counties;
     }
 

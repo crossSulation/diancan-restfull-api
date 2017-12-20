@@ -9,15 +9,15 @@ import java.util.List;
 public interface RestaurantRepository extends JpaRepository<Restaurant,Long> {
 
     // 通过餐厅所在省份获得
-    List<Restaurant> findRestaurantsByAddress_Province(Province province);
+    List<Restaurant> findRestaurantsByAddress_ProvinceId(Long provinceId);
     //通过餐厅所在城市获取
-    List<Restaurant> findRestaurantsByAddress_City(City city);
+    List<Restaurant> findRestaurantsByAddress_CityId(Long cityId);
     //通过餐厅所在县城获取
-    List<Restaurant> findRestaurantsByAddress_County(County county);
+    List<Restaurant> findRestaurantsByAddress_CountyId(Long countyId);
     //通过餐厅所在城镇获取
-    List<Restaurant> findRestaurantsByAddress_Town(Town town);
+    List<Restaurant> findRestaurantsByAddress_TownId(Long townId);
     //通过餐厅所在
-    List<Restaurant> findRestaurantsByAddress_Street(Street street);
+    List<Restaurant> findRestaurantsByAddress_StreetId(Long streetId);
     //通过餐厅地址描述
     List<Restaurant> findRestaurantsByAddress_Desc(String desc);
     //通过经度

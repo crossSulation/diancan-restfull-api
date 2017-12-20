@@ -3,6 +3,7 @@ package com.diancan.domain.resto.metadata;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,9 +13,11 @@ import java.util.Set;
 public class Town {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="town_id")
-    private  Long id;
+    private  Long townId;
+
+    @Column(nullable = false,unique = true)
     private String name;
+
     private String nameCN;
 
     @Column(nullable = false,length = 10)
@@ -22,32 +25,35 @@ public class Town {
 
     private String nameEN;
 
-    private Set<Street> streets;
+    @OneToMany(mappedBy = "townId",cascade = CascadeType.ALL,targetEntity = Street.class,fetch = FetchType.LAZY)
+    private Set<Street> streets = new HashSet<>();
 
-    @ManyToOne()
-    @JoinColumn(name="county_town_id")
-    private County county;
+    private Long countyId;
 
-    private Set<Address> addresses;
+    @OneToMany(mappedBy = "townId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    private Set<Address> addresses =new HashSet<>();
 
     private String desc;
+
     private String descCN;
+
     private String descEN;
 
     public Town() {
     }
 
-    public County getCounty() {
-        return county;
+    public Long getCountyId() {
+        return countyId;
     }
 
-    public void setCounty(County county) {
-        this.county = county;
+    public void setCountyId(Long countyId) {
+        this.countyId = countyId;
     }
 
-    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Address.class)
-    @JoinTable(name="address_town",joinColumns = {@JoinColumn(name="town_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
     public Set<Address> getAddresses() {
+        for(Address addr : addresses) {
+            addr.setTownId(townId);
+        }
         return addresses;
     }
 
@@ -87,9 +93,10 @@ public class Town {
         this.nameEN = nameEN;
     }
 
-    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Street.class)
-    @JoinTable(name="town_street",joinColumns = {@JoinColumn(name="town_id")},inverseJoinColumns = {@JoinColumn(name="street_id")})
     public Set<Street> getStreets() {
+        for(Street street:streets) {
+            street.setTownId(townId);
+        }
         return streets;
     }
 

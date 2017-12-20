@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProvinceRepository extends JpaRepository<Province,Long>{
 
-    Province findOneById(Long id);
+    Province findOneByProvinceId(Long id);
 
     List<Province> findProvincesByNameLike(String name);
 

@@ -20,23 +20,23 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public List<Address> findMultipleByGivenProvince(Province province) {
-        return addressRepository.findAddressesByProvince(province);
+    public List<Address> findMultipleByGivenProvince(Long provinceId) {
+        return addressRepository.findAddressesByProvinceId(provinceId);
     }
 
     @Override
-    public List<Address> findMultipleByGivenCity(City city) {
-        return addressRepository.findAddressesByCity(city);
+    public List<Address> findMultipleByGivenCity(Long cityId) {
+        return addressRepository.findAddressesByCityId(cityId);
     }
 
     @Override
-    public List<Address> findMultipleByGivenTown(Town town) {
-        return addressRepository.findAddressesByTown(town);
+    public List<Address> findMultipleByGivenTown(Long townId) {
+        return addressRepository.findAddressesByTownId(townId);
     }
 
     @Override
-    public List<Address> findMultipleByGivenStreet(Street street) {
-        return addressRepository.findAddressesByStreet(street);
+    public List<Address> findMultipleByGivenStreet(Long streetId) {
+        return addressRepository.findAddressesByStreetId(streetId);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public List<Address> findMultipleByGivenCounty(County county) {
-        return addressRepository.findAddressesByCounty(county);
+    public List<Address> findMultipleByGivenCounty(Long countyId) {
+        return addressRepository.findAddressesByCountyId(countyId);
     }
 
     @Override

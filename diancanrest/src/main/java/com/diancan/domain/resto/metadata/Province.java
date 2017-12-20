@@ -1,6 +1,8 @@
 package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,28 +12,38 @@ import java.util.Set;
 public class Province {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "province_id")
-    private Long id;
+    private Long provinceId;
     @Column(nullable = false,length = 10)
     private String  code;
 
-    private Set<City> cities;
+    @OneToMany(mappedBy = "provinceId",cascade = CascadeType.ALL,targetEntity = City.class,fetch = FetchType.LAZY)
+    private Set<City> cities =new HashSet<>();
 
-    private Set<Address> addresses;
+    @OneToMany(mappedBy = "provinceId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    private Set<Address> addresses =new HashSet<>();
 
+    @Column(nullable = false,length = 50,unique = true)
     private String name;
+
+    @Column(unique = true)
     private String nameCN;
+
+    @Column(unique = true)
     private String nameEN;
+
     private String desc;
+
     private String descCN;
+
     private String descEN;
 
     public Province() {
     }
 
-    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = Address.class)
-    @JoinTable(name="address_province",joinColumns = {@JoinColumn(name="province_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
     public Set<Address> getAddresses() {
+        for(Address addr : addresses) {
+            addr.setProvinceId(provinceId);
+        }
         return addresses;
     }
 
@@ -47,9 +59,10 @@ public class Province {
         this.code = code;
     }
 
-    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = City.class)
-    @JoinTable(name="province_city",joinColumns = {@JoinColumn(name="province_id")},inverseJoinColumns = {@JoinColumn(name="city_id")})
     public Set<City> getCities() {
+        for(City city : cities) {
+            city.setProvinceId(provinceId);
+        }
         return cities;
     }
 

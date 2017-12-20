@@ -1,9 +1,6 @@
 package com.diancan.domain.resto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 // 餐桌
@@ -19,15 +16,15 @@ public class RestTable {
     private Date  startBookTime ;// 预定开始时间
     private Integer bookedTime ;// 预定时间
     private Boolean isBooked; //是否已经被预定
-    @ManyToOne
-    private Restaurant restaurant;
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    private Long restaurantId;
+
+    public Long getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public RestTable() {}

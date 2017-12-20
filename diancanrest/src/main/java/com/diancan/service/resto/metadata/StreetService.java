@@ -15,5 +15,5 @@ public interface StreetService {
 
     List<Street> findMultipleByGivenCode(String code);
 
-    List<Street>  findMultipleByGivenTown(Town town);
+    List<Street>  findMultipleByGivenTown(Long townId);
 }

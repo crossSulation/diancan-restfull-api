@@ -1,5 +1,6 @@
 package com.diancan.domain.resto.metadata;
 
+import com.diancan.domain.resto.Restaurant;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
@@ -13,34 +14,31 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="address_id" )
-    private  Long id; // 主键
+    private  Long addressId; // 主键
 
-    @ManyToOne
-    @JoinColumn(name="address_province_id")
-    private Province province;
+    @OneToOne(mappedBy = "address")
+    private Restaurant restaurant;//
 
-    @ManyToOne
-    @JoinColumn(name = "address_city_id")
-    private City city;
+    private Long provinceId;
 
-    @ManyToOne
-    @JoinColumn(name = "address_county_id")
-    private County county;
+    private Long cityId;
 
-    @ManyToOne
-    @JoinColumn(name = "address_town_id")
-    private Town town;
+    private Long countyId;
 
-    @ManyToOne
-    @JoinColumn(name = "address_street_id")
-    private Street street;
+    private Long townId;
+
+    private Long streetId;
+
     private String partition;
 
     private String longitude; //经度
+
     private String latitude;// 纬度
+
     private String desc;
+
     private String descCN;
+
     private String descEN;
 
     public Address() {
@@ -90,44 +88,44 @@ public class Address {
         return this.descCN;
     }
 
-    public Province getProvince() {
-        return province;
+    public Long getProvinceId() {
+        return provinceId;
     }
 
-    public void setProvince(Province province) {
-        this.province = province;
+    public void setProvinceId(Long provinceId) {
+        this.provinceId = provinceId;
     }
 
-    public City getCity() {
-        return city;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
-    public County getCounty() {
-        return county;
+    public Long getCountyId() {
+        return countyId;
     }
 
-    public void setCounty(County county) {
-        this.county = county;
+    public void setCountyId(Long countyId) {
+        this.countyId = countyId;
     }
 
-    public Town getTown() {
-        return town;
+    public Long getTownId() {
+        return townId;
     }
 
-    public void setTown(Town town) {
-        this.town = town;
+    public void setTownId(Long townId) {
+        this.townId = townId;
     }
 
-    public Street getStreet() {
-        return street;
+    public Long getStreetId() {
+        return streetId;
     }
 
-    public void setStreet(Street street) {
-        this.street = street;
+    public void setStreetId(Long streetId) {
+        this.streetId = streetId;
     }
 
     public String getPartition() {
@@ -136,5 +134,13 @@ public class Address {
 
     public void setPartition(String partition) {
         this.partition = partition;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

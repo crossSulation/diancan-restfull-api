@@ -9,7 +9,7 @@ public interface CityService {
 
     City findOneByGivenId(Long id);
 
-    List<City> findMultipleByGivenProvince(Province province);
+    List<City> findMultipleByGivenProvince(Long provinceId);
 
     List<City> findMultipleByGivenName(String name);
 

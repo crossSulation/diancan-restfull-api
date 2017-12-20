@@ -1,6 +1,7 @@
 package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,30 +11,36 @@ import java.util.Set;
 public class Street {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="street_id")
-    private  Long id;
+    private  Long streetId;
 
     @Column(nullable = false,length = 50)
     private String name;
+
     private String nameCN;
+
     private String nameEN;
+
     private String desc;
+
     private String descCN;
+
     private String descEN;
+
     @Column(nullable = false,length = 10)
     private String code;
 
-    @ManyToOne
-    @JoinColumn(name = "town_street_id")
-    private Town town;
+    private Long townId;
 
-    private Set<Address> addresses;
+    @OneToMany(mappedBy = "streetId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    private Set<Address> addresses =new HashSet<>();
+
     public Street() {
     }
 
-    @OneToMany(mappedBy = "street",cascade = CascadeType.ALL,targetEntity = Address.class)
-    @JoinTable(name="address_street",joinColumns = {@JoinColumn(name="street_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
     public Set<Address> getAddresses() {
+        for(Address addr : addresses) {
+            addr.setStreetId(streetId);
+        }
         return addresses;
     }
 
@@ -41,12 +48,12 @@ public class Street {
         this.addresses = addresses;
     }
 
-    public Town getTown() {
-        return town;
+    public Long getTownId() {
+        return townId;
     }
 
-    public void setTown(Town town) {
-        this.town = town;
+    public void setTownId(Long townId) {
+        this.townId = townId;
     }
 
     public String getName() {
