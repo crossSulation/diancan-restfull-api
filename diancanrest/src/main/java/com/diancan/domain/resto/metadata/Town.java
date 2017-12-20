@@ -1,12 +1,18 @@
 package com.diancan.domain.resto.metadata;
 
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name="town")
+@Access(AccessType.FIELD)
 public class Town {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="town_id")
     private  Long id;
     private String name;
     private String nameCN;
@@ -16,13 +22,37 @@ public class Town {
 
     private String nameEN;
 
-    @OneToMany(mappedBy = "town")
-    private List<Street> streets;
+    private Set<Street> streets;
+
+    @ManyToOne()
+    @JoinColumn(name="county_town_id")
+    private County county;
+
+    private Set<Address> addresses;
+
     private String desc;
     private String descCN;
     private String descEN;
 
     public Town() {
+    }
+
+    public County getCounty() {
+        return county;
+    }
+
+    public void setCounty(County county) {
+        this.county = county;
+    }
+
+    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Address.class)
+    @JoinTable(name="address_town",joinColumns = {@JoinColumn(name="town_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public String getName() {
@@ -57,11 +87,13 @@ public class Town {
         this.nameEN = nameEN;
     }
 
-    public List<Street> getStreets() {
+    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Street.class)
+    @JoinTable(name="town_street",joinColumns = {@JoinColumn(name="town_id")},inverseJoinColumns = {@JoinColumn(name="street_id")})
+    public Set<Street> getStreets() {
         return streets;
     }
 
-    public void setStreets(List<Street> streets) {
+    public void setStreets(Set<Street> streets) {
         this.streets = streets;
     }
 

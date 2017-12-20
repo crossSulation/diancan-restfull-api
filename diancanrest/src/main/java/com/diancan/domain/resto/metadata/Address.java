@@ -8,26 +8,35 @@ import javax.persistence.*;
  * defined address entity
  */
 @Entity
+@Table(name = "address")
+@Access(AccessType.FIELD)
 public class Address {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="address_id" )
     private  Long id; // 主键
-    @OneToOne(targetEntity = Province.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_province_fk")
-    private  Province province;//
-    @OneToOne(targetEntity = City.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_city_fk")
-    private City city; //市
-    @OneToOne(targetEntity = County.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_county_fk")
-    private County county;//县
-    @OneToOne(targetEntity = Town.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_town_fk")
-    private Town town; //镇
-    @OneToOne(targetEntity = Street.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_street_fk")
+
+    @ManyToOne
+    @JoinColumn(name="address_province_id")
+    private Province province;
+
+    @ManyToOne
+    @JoinColumn(name = "address_city_id")
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(name = "address_county_id")
+    private County county;
+
+    @ManyToOne
+    @JoinColumn(name = "address_town_id")
+    private Town town;
+
+    @ManyToOne
+    @JoinColumn(name = "address_street_id")
     private Street street;
     private String partition;
+
     private String longitude; //经度
     private String latitude;// 纬度
     private String desc;

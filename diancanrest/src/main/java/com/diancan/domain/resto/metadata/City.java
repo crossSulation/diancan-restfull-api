@@ -2,14 +2,25 @@ package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "city")
+@Access(AccessType.FIELD)
 public class City {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
     private  long id;
-    @OneToMany(mappedBy = "city")
-    private List<County> counties;
+
+    private Set<County> counties;
+
+    @ManyToOne
+    @JoinColumn(name = "province_city_id")
+    private Province province;
+
+    private Set<Address> addresses;
+
     @Column()
     private String nameCN;
     @Column()
@@ -27,11 +38,31 @@ public class City {
     public City() {
     }
 
-    public List<County> getCounties() {
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL,targetEntity = Address.class)
+    @JoinTable(name="address_city",joinColumns = {@JoinColumn(name="city_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL,targetEntity = County.class)
+    @JoinTable(name="city_county",joinColumns = {@JoinColumn(name="city_id")},inverseJoinColumns = {@JoinColumn(name="county_id")})
+    public Set<County> getCounties() {
         return counties;
     }
 
-    public void setCounties(List<County> counties) {
+    public void setCounties(Set<County> counties) {
         this.counties = counties;
     }
 

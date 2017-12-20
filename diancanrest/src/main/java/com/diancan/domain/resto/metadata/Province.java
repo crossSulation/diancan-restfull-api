@@ -2,16 +2,23 @@ package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "province")
+@Access(AccessType.FIELD)
 public class Province {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "province_id")
     private Long id;
     @Column(nullable = false,length = 10)
     private String  code;
-    @OneToMany(mappedBy = "province")
-    private List<City> cities;
+
+    private Set<City> cities;
+
+    private Set<Address> addresses;
+
     private String name;
     private String nameCN;
     private String nameEN;
@@ -22,6 +29,16 @@ public class Province {
     public Province() {
     }
 
+    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = Address.class)
+    @JoinTable(name="address_province",joinColumns = {@JoinColumn(name="province_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
     public String getCode() {
         return code;
     }
@@ -30,11 +47,13 @@ public class Province {
         this.code = code;
     }
 
-    public List<City> getCities() {
+    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = City.class)
+    @JoinTable(name="province_city",joinColumns = {@JoinColumn(name="province_id")},inverseJoinColumns = {@JoinColumn(name="city_id")})
+    public Set<City> getCities() {
         return cities;
     }
 
-    public void setCities(List<City> cities) {
+    public void setCities(Set<City> cities) {
         this.cities = cities;
     }
 

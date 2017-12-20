@@ -2,11 +2,15 @@ package com.diancan.domain.resto.metadata;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "county")
+@Access(AccessType.FIELD)
 public class County {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "county_id")
     private  Long id;
     @Column(nullable = false,length = 10)
     private String code;
@@ -17,10 +21,33 @@ public class County {
     private String descCN;
     private String descEN;
 
-    @OneToMany(mappedBy = "county")
-    private List<Town> towns;
+    private Set<Town> towns;
+
+    @ManyToOne()
+    @JoinColumn(name = "city_county_id")
+    private City city;
+
+    private Set<Address> addresses;
 
     public County() {
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    @OneToMany(mappedBy = "county",cascade = CascadeType.ALL,targetEntity = Address.class)
+    @JoinTable(name="address_county",joinColumns = {@JoinColumn(name="county_id")},inverseJoinColumns = {@JoinColumn(name="address_id")})
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public String getCode() {
@@ -79,11 +106,13 @@ public class County {
         this.descEN = descEN;
     }
 
-    public List<Town> getTowns() {
+    @OneToMany(mappedBy = "county",cascade = CascadeType.ALL,targetEntity = Town.class)
+    @JoinTable(name="county_town",joinColumns = {@JoinColumn(name="county_id")},inverseJoinColumns = {@JoinColumn(name="town_id")})
+    public Set<Town> getTowns() {
         return towns;
     }
 
-    public void setTowns(List<Town> towns) {
+    public void setTowns(Set<Town> towns) {
         this.towns = towns;
     }
 }
