@@ -8,16 +8,15 @@ public class City {
     @Id
     @GeneratedValue
     private  long id;
-    @OneToMany
+    @OneToMany(mappedBy = "city")
     private List<County> counties;
-    @OneToOne
-    private Province province;
     @Column()
     private String nameCN;
     @Column()
     private String nameEN;
+    @Column(nullable = false,length = 50)
     private String name;
-    @Column()
+    @Column(nullable = false,length = 10)
     private String zipCode;
     private String desc;
     @Column()
@@ -26,14 +25,6 @@ public class City {
     private String descEN;
 
     public City() {
-    }
-
-    public Province getProvince() {
-        return province;
-    }
-
-    public void setProvince(Province province) {
-        this.province = province;
     }
 
     public List<County> getCounties() {

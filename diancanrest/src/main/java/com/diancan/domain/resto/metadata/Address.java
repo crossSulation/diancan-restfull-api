@@ -11,16 +11,21 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue
-    private  id; // 主键Long
-    @OneToOne
+    private  Long id; // 主键
+    @OneToOne(targetEntity = Province.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_province_fk")
     private  Province province;//
-    @OneToOne
+    @OneToOne(targetEntity = City.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_city_fk")
     private City city; //市
-    @OneToOne
+    @OneToOne(targetEntity = County.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_county_fk")
     private County county;//县
-    @OneToOne
+    @OneToOne(targetEntity = Town.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_town_fk")
     private Town town; //镇
-    @OneToOne
+    @OneToOne(targetEntity = Street.class,cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_street_fk")
     private Street street;
     private String partition;
     private String longitude; //经度

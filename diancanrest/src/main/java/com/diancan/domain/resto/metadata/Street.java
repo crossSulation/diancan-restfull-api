@@ -1,24 +1,23 @@
 package com.diancan.domain.resto.metadata;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Street {
     @Id
     @GeneratedValue
     private  Long id;
+
+    @Column(nullable = false,length = 50)
     private String name;
     private String nameCN;
     private String nameEN;
     private String desc;
     private String descCN;
     private String descEN;
+    @Column(nullable = false,length = 10)
     private String code;
-    @OneToOne
-    private Town town;
+
     public Street() {
     }
 

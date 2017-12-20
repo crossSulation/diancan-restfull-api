@@ -1,9 +1,6 @@
 package com.diancan.domain.resto.metadata;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,8 +8,9 @@ public class Province {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(nullable = false,length = 10)
     private String  code;
-    @OneToMany
+    @OneToMany(mappedBy = "province")
     private List<City> cities;
     private String name;
     private String nameCN;
