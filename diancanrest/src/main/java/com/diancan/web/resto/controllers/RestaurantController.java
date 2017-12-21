@@ -61,16 +61,16 @@ public class RestaurantController {
      * @param provinceId
      * @return
      */
-    @ApiOperation(value = "根据省份获取餐馆",notes = "",httpMethod = "GET")
-    @ApiImplicitParam(value = "provinceId",name = "provinceId",dataType = "provinceId",paramType = "Long",required = true)
-    @GetMapping(value = "/{provinceId}",params = "provinceId",path = "/province/{provinceId}")
+    @ApiOperation(value = "根据省份获取餐馆")
+    @ApiImplicitParam(value = "provinceId",name = "provinceId",dataType = "provinceId",paramType = "path",required = true)
+    @GetMapping(path = "/province/{provinceId}")
     public  List<Restaurant> getRestaurantsByGivenAddressProvince(@PathVariable Long provinceId) {
         return  restarantService.findRestaurantByGivenAdressProvince(provinceId);
     }
 
     @ApiOperation(value = "根据评分获取餐馆",notes = "")
-    @ApiImplicitParam(value="rating",name = "rating",dataType = "Integer",paramType = "Integer",required = true)
-    @GetMapping(value = "/{rating}",params = "rating",path = "/rating/{rating}")
+    @ApiImplicitParam(value="rating",name = "rating",dataType = "Integer",paramType = "path",required = true)
+    @GetMapping(path = "/rating/{rating}")
     public  List<Restaurant> getRestaurantByGivenRating(@PathVariable Integer rating) {
          return  restarantService.findRestaurantByGivenRating(rating);
     }
@@ -79,7 +79,7 @@ public class RestaurantController {
      * @param id
      */
     @ApiOperation(value ="根据给定id删除餐馆",notes = "")
-    @ApiImplicitParam(value = "id",name = "id",dataType = "Integer",paramType = "Integer",required = true)
+    @ApiImplicitParam(value = "id",name = "id",dataType = "Integer",paramType = "path",required = true)
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public void delOneRestaurantById(@PathVariable long id) {
          restarantService.delRestaurantById(id);

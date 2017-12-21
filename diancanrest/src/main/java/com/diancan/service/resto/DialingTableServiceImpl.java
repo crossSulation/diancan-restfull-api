@@ -47,4 +47,20 @@ public class DialingTableServiceImpl implements  DialingTableService {
     public  List<DialingTable> findAll() {
         return  dialingTableRepository.findAll();
     }
+
+    public void deleteAll() {
+        dialingTableRepository.deleteAll();
+    }
+
+    public DialingTable updateOne(DialingTable dialingTable) {
+        return  dialingTableRepository.save(dialingTable);
+    }
+
+    public DialingTable addNewOne(DialingTable dialingTable) {
+        return dialingTableRepository.save(dialingTable);
+    }
+
+    public void deleteOne(Long id) {
+        dialingTableRepository.delete(id);
+    }
 }

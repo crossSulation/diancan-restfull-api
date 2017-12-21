@@ -7,12 +7,10 @@ import com.diancan.respositorys.DrinkRepository;
 import com.diancan.service.resto.DrinkServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -142,5 +140,70 @@ public class DrinkController {
             @PathVariable(value = "category",name = "category",required = true)
                     DrinkCategory category) {
         return  drinkService.findMultipleByDrinkCategoryEquals(category);
+    }
+
+    /**
+     *
+     * @param num
+     * @param isBooked
+     * @return
+     */
+    @ApiOperation(value = "get drinks by given drink category")
+    @ApiImplicitParams({
+            @ApiImplicitParam(value = "num",name="num",dataType = "Integer", paramType = "param"),
+            @ApiImplicitParam(value = "isBooked",name="isBooked",dataType = "Boolean", paramType = "param")})
+    @GetMapping(name="getDrinksByGivenCategory",path = "/dialingtable")
+    public List<Drink> getDrinksByGivenDialingTableNumAndDialingTableIsBooked(
+            @RequestParam(value="num",name = "num",required = true) Integer num,
+            @RequestParam(value="isBooked",name = "isBooked",required = true) Boolean isBooked) {
+
+        return  drinkService.findMultipleByDialingTable_NumAndDialingTable_IsBooked(num,isBooked);
+    }
+
+    /**
+     *
+     * @param newDrink
+     * @return
+     */
+    @ApiOperation(value = "add a new Drink")
+    @ApiImplicitParam(value = "newDrink",name="newDrink",dataType = "Drink", paramType = "body")
+    @RequestMapping(method = RequestMethod.POST)
+    public Drink addNewOneDrink(
+            @RequestBody() Drink newDrink) {
+        return drinkService.addNewOne(newDrink);
+    }
+
+    /**
+     *
+     * @param id
+     */
+    @ApiOperation(value = "delete one drink")
+    @ApiImplicitParam(value = "id",name="id",dataType = "Long", paramType = "path")
+    @RequestMapping(method = RequestMethod.DELETE,path = "/{id}")
+    public void deleteOneByGiveId(
+            @PathVariable(name = "id",value = "id",required = true) Long id) {
+        drinkService.deleteOneByGivenId(id);
+    }
+
+    /**
+     *
+     */
+    @ApiOperation(value = "delete all drinks")
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteAll() {
+        drinkService.deleteAll();
+    }
+
+    /**
+     *
+     * @param drink
+     * @return
+     */
+    @ApiOperation(value = "add a new Drink")
+    @ApiImplicitParam(value = "newDrink",name="newDrink",dataType = "Drink", paramType = "body")
+    @RequestMapping(method = RequestMethod.PUT)
+    public Drink updateOne(
+            @RequestBody() Drink drink) {
+        return drinkService.updateOne(drink);
     }
 }
