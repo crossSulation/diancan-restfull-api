@@ -33,21 +33,17 @@ public class Street {
     @OneToOne
     private Town town;
 
-    @OneToMany(mappedBy = "street",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses =new HashSet<Address>();
-
+    @ManyToOne
+    private Address address;
     public Street() {
     }
 
-    public Set<Address> getAddresses() {
-        for(Address addr : addresses) {
-            addr.setId(id);
-        }
-        return addresses;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Long getId() {

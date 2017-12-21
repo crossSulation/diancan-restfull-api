@@ -16,7 +16,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id; // 主键
 
-    @OneToOne
+    @OneToOne(mappedBy = "address")
     private Restaurant restaurant;//
 
     @OneToOne

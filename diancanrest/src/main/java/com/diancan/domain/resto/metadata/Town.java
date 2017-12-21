@@ -31,8 +31,8 @@ public class Town {
     @OneToOne
     private County county;
 
-    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses =new HashSet<Address>();
+    @ManyToOne
+    private Address address;
 
     @Column(name="descInfo")
     private String desc;
@@ -60,15 +60,12 @@ public class Town {
         this.county = county;
     }
 
-    public Set<Address> getAddresses() {
-        for(Address addr : addresses) {
-            addr.setId(id);
-        }
-        return addresses;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getName() {

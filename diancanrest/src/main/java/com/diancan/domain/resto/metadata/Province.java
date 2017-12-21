@@ -19,8 +19,8 @@ public class Province {
     @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = City.class,fetch = FetchType.LAZY)
     private Set<City> cities =new HashSet<City>();
 
-    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses =new HashSet<Address>();
+    @ManyToOne
+    private Address address;
 
     @Column(nullable = false,length = 50,unique = true)
     private String name;
@@ -49,15 +49,12 @@ public class Province {
         this.id = id;
     }
 
-    public Set<Address> getAddresses() {
-        for(Address addr : addresses) {
-            addr.setId(id);
-        }
-        return addresses;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getCode() {
