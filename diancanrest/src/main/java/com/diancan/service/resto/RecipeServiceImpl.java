@@ -41,4 +41,16 @@ public class RecipeServiceImpl implements RecipeService {
     public  List<Recipe> findAll() {
         return recipeRepository.findAll();
     }
+
+    public  Recipe addOne(Recipe recipe) {
+        return  recipeRepository.save(recipe);
+    }
+
+    public void deleteOne(Long id) {
+         recipeRepository.delete(id);
+    }
+
+    public Recipe updateOne(Recipe recipe) {
+       return recipeRepository.save(recipe);
+    }
 }

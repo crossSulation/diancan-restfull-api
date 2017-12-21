@@ -3,6 +3,7 @@ package com.diancan.web.resto.controllers;
 import com.diancan.domain.resto.Restaurant;
 import com.diancan.domain.resto.metadata.Province;
 import com.diancan.service.resto.RestarantServiceImpl;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/restaurants")
+@Api(value="Restaurant")
 public class RestaurantController {
 
     @Autowired
@@ -61,14 +63,14 @@ public class RestaurantController {
      */
     @ApiOperation(value = "根据省份获取餐馆",notes = "",httpMethod = "GET")
     @ApiImplicitParam(value = "provinceId",name = "provinceId",dataType = "provinceId",paramType = "Long",required = true)
-    @GetMapping(value = "/{provinceId}",params = "provinceId")
+    @GetMapping(value = "/{provinceId}",params = "provinceId",path = "/province/{provinceId}")
     public  List<Restaurant> getRestaurantsByGivenAddressProvince(@PathVariable Long provinceId) {
         return  restarantService.findRestaurantByGivenAdressProvince(provinceId);
     }
 
     @ApiOperation(value = "根据评分获取餐馆",notes = "")
     @ApiImplicitParam(value="rating",name = "rating",dataType = "Integer",paramType = "Integer",required = true)
-    @GetMapping(value = "/{rating}",params = "rating")
+    @GetMapping(value = "/{rating}",params = "rating",path = "/rating/{rating}")
     public  List<Restaurant> getRestaurantByGivenRating(@PathVariable Integer rating) {
          return  restarantService.findRestaurantByGivenRating(rating);
     }
