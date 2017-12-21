@@ -16,18 +16,23 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id; // 主键
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne
     private Restaurant restaurant;//
 
-    private Long provinceId;
+    @OneToOne
+    private Province province;
 
-    private Long cityId;
+    @OneToOne
+    private City city;
 
-    private Long countyId;
+    @OneToOne
+    private County county;
 
-    private Long townId;
+    @OneToOne
+    private Town town;
 
-    private Long streetId;
+    @OneToOne
+    private Street street;
 
     @Column(name="partitionInfo")
     private String partition;
@@ -44,6 +49,14 @@ public class Address {
     private String descEN;
 
     public Address() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getLongitude() {
@@ -90,44 +103,44 @@ public class Address {
         return this.descCN;
     }
 
-    public Long getProvinceId() {
-        return provinceId;
+    public Province getProvince() {
+        return province;
     }
 
-    public void setProvinceId(Long provinceId) {
-        this.provinceId = provinceId;
+    public void setProvince(Province province) {
+        this.province = province;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public City getCity() {
+        return city;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCity(City city) {
+        this.city = city;
     }
 
-    public Long getCountyId() {
-        return countyId;
+    public County getCounty() {
+        return county;
     }
 
-    public void setCountyId(Long countyId) {
-        this.countyId = countyId;
+    public void setCounty(County county) {
+        this.county = county;
     }
 
-    public Long getTownId() {
-        return townId;
+    public Town getTown() {
+        return town;
     }
 
-    public void setTownId(Long townId) {
-        this.townId = townId;
+    public void setTown(Town town) {
+        this.town = town;
     }
 
-    public Long getStreetId() {
-        return streetId;
+    public Street getStreet() {
+        return street;
     }
 
-    public void setStreetId(Long streetId) {
-        this.streetId = streetId;
+    public void setStreet(Street street) {
+        this.street = street;
     }
 
     public String getPartition() {

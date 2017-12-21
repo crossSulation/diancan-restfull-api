@@ -16,10 +16,10 @@ public class Province {
     @Column(nullable = false,length = 10)
     private String  code;
 
-    @OneToMany(mappedBy = "provinceId",cascade = CascadeType.ALL,targetEntity = City.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = City.class,fetch = FetchType.LAZY)
     private Set<City> cities =new HashSet<City>();
 
-    @OneToMany(mappedBy = "provinceId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "province",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
     private Set<Address> addresses =new HashSet<Address>();
 
     @Column(nullable = false,length = 50,unique = true)
@@ -41,9 +41,17 @@ public class Province {
     public Province() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setProvinceId(id);
+            addr.setId(id);
         }
         return addresses;
     }
@@ -62,7 +70,7 @@ public class Province {
 
     public Set<City> getCities() {
         for(City city : cities) {
-            city.setProvinceId(id);
+            city.setId(id);
         }
         return cities;
     }

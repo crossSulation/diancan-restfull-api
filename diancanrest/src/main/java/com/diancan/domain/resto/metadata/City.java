@@ -13,12 +13,13 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @OneToMany(mappedBy = "cityId",cascade = CascadeType.ALL,targetEntity = County.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL,targetEntity = County.class,fetch = FetchType.LAZY)
     private Set<County> counties = new HashSet<County>();
 
-    private Long provinceId;
+    @OneToOne
+    private Province province;
 
-    @OneToMany(mappedBy = "cityId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
     private Set<Address> addresses =new HashSet<Address>();
 
     private String nameCN;
@@ -41,9 +42,25 @@ public class City {
     public City() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
     public Set<Address> getAddresses() {
         for(Address addr: addresses) {
-            addr.setCityId(id);
+            addr.setId(id);
         }
         return addresses;
     }
@@ -52,18 +69,9 @@ public class City {
         this.addresses = addresses;
     }
 
-
-    public Long getProvinceId() {
-        return provinceId;
-    }
-
-    public void setProvinceId(Long provinceId) {
-        this.provinceId = provinceId;
-    }
-
     public Set<County> getCounties() {
         for(County county : counties) {
-            county.setCityId(id);
+            county.setId(id);
         }
         return counties;
     }

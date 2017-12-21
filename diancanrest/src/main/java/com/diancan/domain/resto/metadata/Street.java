@@ -30,9 +30,10 @@ public class Street {
     @Column(nullable = false,length = 10)
     private String code;
 
-    private Long townId;
+    @OneToOne
+    private Town town;
 
-    @OneToMany(mappedBy = "streetId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "street",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
     private Set<Address> addresses =new HashSet<Address>();
 
     public Street() {
@@ -40,7 +41,7 @@ public class Street {
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setStreetId(id);
+            addr.setId(id);
         }
         return addresses;
     }
@@ -49,12 +50,20 @@ public class Street {
         this.addresses = addresses;
     }
 
-    public Long getTownId() {
-        return townId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTownId(Long townId) {
-        this.townId = townId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Town getTown() {
+        return town;
+    }
+
+    public void setTown(Town town) {
+        this.town = town;
     }
 
     public String getName() {

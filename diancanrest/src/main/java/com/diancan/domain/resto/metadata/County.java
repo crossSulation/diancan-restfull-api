@@ -29,28 +29,38 @@ public class County {
 
     private String descEN;
 
-    @OneToMany(mappedBy = "countyId",cascade = CascadeType.ALL,targetEntity = Town.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "county",cascade = CascadeType.ALL,targetEntity = Town.class,fetch = FetchType.LAZY)
     private Set<Town> towns =new HashSet<Town>();
 
-    private Long cityId;
+    @OneToOne
+    private City city;
 
-    @OneToMany(mappedBy = "countyId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "county",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
     private Set<Address> addresses = new HashSet<Address>();
 
     public County() {
     }
 
-    public Long getCityId() {
-        return cityId;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setCountyId(id);
+            addr.setId(id);
         }
         return addresses;
     }
@@ -117,7 +127,7 @@ public class County {
 
     public Set<Town> getTowns() {
         for(Town town : towns) {
-            town.setCountyId(id);
+            town.setId(id);
         }
         return towns;
     }

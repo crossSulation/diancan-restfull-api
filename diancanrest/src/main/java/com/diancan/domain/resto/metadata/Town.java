@@ -25,12 +25,13 @@ public class Town {
 
     private String nameEN;
 
-    @OneToMany(mappedBy = "townId",cascade = CascadeType.ALL,targetEntity = Street.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Street.class,fetch = FetchType.LAZY)
     private Set<Street> streets = new HashSet<Street>();
 
-    private Long countyId;
+    @OneToOne
+    private County county;
 
-    @OneToMany(mappedBy = "townId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "town",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
     private Set<Address> addresses =new HashSet<Address>();
 
     @Column(name="descInfo")
@@ -43,17 +44,25 @@ public class Town {
     public Town() {
     }
 
-    public Long getCountyId() {
-        return countyId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCountyId(Long countyId) {
-        this.countyId = countyId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public County getCounty() {
+        return county;
+    }
+
+    public void setCounty(County county) {
+        this.county = county;
     }
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setTownId(id);
+            addr.setId(id);
         }
         return addresses;
     }
@@ -96,7 +105,7 @@ public class Town {
 
     public Set<Street> getStreets() {
         for(Street street:streets) {
-            street.setTownId(id);
+            street.setId(id);
         }
         return streets;
     }
