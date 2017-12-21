@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long addressId; // 主键
+    private  Long id; // 主键
 
     @OneToOne(mappedBy = "address")
     private Restaurant restaurant;//
@@ -29,12 +29,14 @@ public class Address {
 
     private Long streetId;
 
+    @Column(name="partitionInfo")
     private String partition;
 
     private String longitude; //经度
 
     private String latitude;// 纬度
 
+    @Column(name="descInfo")
     private String desc;
 
     private String descCN;

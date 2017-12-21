@@ -11,7 +11,7 @@ import java.util.Set;
 public class County {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long countyId;
+    private  Long id;
 
     @Column(nullable = false,length = 10)
     private String code;
@@ -22,6 +22,7 @@ public class County {
 
     private String nameEN;
 
+    @Column(name="descInfo")
     private String desc;
 
     private String descCN;
@@ -29,12 +30,12 @@ public class County {
     private String descEN;
 
     @OneToMany(mappedBy = "countyId",cascade = CascadeType.ALL,targetEntity = Town.class,fetch = FetchType.LAZY)
-    private Set<Town> towns =new HashSet<>();
+    private Set<Town> towns =new HashSet<Town>();
 
     private Long cityId;
 
     @OneToMany(mappedBy = "countyId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses = new HashSet<>();
+    private Set<Address> addresses = new HashSet<Address>();
 
     public County() {
     }
@@ -49,7 +50,7 @@ public class County {
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setCountyId(countyId);
+            addr.setCountyId(id);
         }
         return addresses;
     }
@@ -116,7 +117,7 @@ public class County {
 
     public Set<Town> getTowns() {
         for(Town town : towns) {
-            town.setCountyId(countyId);
+            town.setCountyId(id);
         }
         return towns;
     }

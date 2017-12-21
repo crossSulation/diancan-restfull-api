@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TownRepository extends JpaRepository<Town,Long> {
 
-    Town findOneByTownId(Long id);
+    Town findOneById(Long id);
 
     List<Town> findTownsByCodeLike(String code);
 

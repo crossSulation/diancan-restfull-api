@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "restaurant")
 public class Restaurant implements Serializable {
     private static final long serialVersionUID = -3258839839160856613L;
     @Id
     @GeneratedValue
-    private Long restaurantId;
+    private Long id;
     //the Image info of the resto
     private String restoImage;
     //the contact
@@ -29,8 +30,8 @@ public class Restaurant implements Serializable {
     // the rating star
     private Integer rating;
 
-    @OneToMany(mappedBy = "restaurantId",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<RestTable> tables =new ArrayList<>();
+    @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<DialingTable> tables =new ArrayList<DialingTable>();
 
     public Integer getRating() {
         return rating;
@@ -43,14 +44,14 @@ public class Restaurant implements Serializable {
     public Restaurant() {
     }
 
-    public List<RestTable> getTables() {
-        for(RestTable restTable : tables) {
-            restTable.setRestaurantId(restaurantId);
+    public List<DialingTable> getTables() {
+        for(DialingTable dialingTable : tables) {
+            dialingTable.setId(id);
         }
         return tables;
     }
 
-    public void setTables(List<RestTable> tables) {
+    public void setTables(List<DialingTable> tables) {
         this.tables = tables;
     }
 

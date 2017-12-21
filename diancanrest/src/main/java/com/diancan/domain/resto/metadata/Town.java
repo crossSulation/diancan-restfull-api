@@ -13,7 +13,7 @@ import java.util.Set;
 public class Town {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long townId;
+    private  Long id;
 
     @Column(nullable = false,unique = true)
     private String name;
@@ -26,13 +26,14 @@ public class Town {
     private String nameEN;
 
     @OneToMany(mappedBy = "townId",cascade = CascadeType.ALL,targetEntity = Street.class,fetch = FetchType.LAZY)
-    private Set<Street> streets = new HashSet<>();
+    private Set<Street> streets = new HashSet<Street>();
 
     private Long countyId;
 
     @OneToMany(mappedBy = "townId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses =new HashSet<>();
+    private Set<Address> addresses =new HashSet<Address>();
 
+    @Column(name="descInfo")
     private String desc;
 
     private String descCN;
@@ -52,7 +53,7 @@ public class Town {
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setTownId(townId);
+            addr.setTownId(id);
         }
         return addresses;
     }
@@ -95,7 +96,7 @@ public class Town {
 
     public Set<Street> getStreets() {
         for(Street street:streets) {
-            street.setTownId(townId);
+            street.setTownId(id);
         }
         return streets;
     }

@@ -11,7 +11,7 @@ import java.util.Set;
 public class Street {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long streetId;
+    private  Long id;
 
     @Column(nullable = false,length = 50)
     private String name;
@@ -20,6 +20,7 @@ public class Street {
 
     private String nameEN;
 
+    @Column(name="descInfo")
     private String desc;
 
     private String descCN;
@@ -32,14 +33,14 @@ public class Street {
     private Long townId;
 
     @OneToMany(mappedBy = "streetId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses =new HashSet<>();
+    private Set<Address> addresses =new HashSet<Address>();
 
     public Street() {
     }
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setStreetId(streetId);
+            addr.setStreetId(id);
         }
         return addresses;
     }

@@ -6,7 +6,7 @@ import javax.persistence.Id;
 
 // 菜色
 @Entity
-public class Meal {
+public class Recipe {
     @Id
     @GeneratedValue
     private Integer id;
@@ -14,7 +14,7 @@ public class Meal {
     private Integer price; //单价
     private Integer rank; // 受欢迎度
 
-    public Meal() {
+    public Recipe() {
     }
 
     public String getName() {

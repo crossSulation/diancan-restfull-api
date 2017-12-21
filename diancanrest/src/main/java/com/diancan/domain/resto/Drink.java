@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 //饮料
 @Entity
-public class Drink extends Meal {
+public class Drink extends Recipe {
     @Id
     @GeneratedValue
     private Integer id;

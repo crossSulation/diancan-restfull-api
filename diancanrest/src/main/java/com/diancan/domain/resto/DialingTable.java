@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 // 餐桌
-@Entity(name="rest_table")
-public class RestTable {
+@Entity(name="dialing_table")
+public class DialingTable {
     @Id
     @GeneratedValue
     private  Long id; //
@@ -17,17 +17,26 @@ public class RestTable {
     private Integer bookedTime ;// 预定时间
     private Boolean isBooked; //是否已经被预定
 
-    private Long restaurantId;
+    @ManyToOne
+    private Restaurant restaurant;
 
-    public Long getRestaurantId() {
-        return restaurantId;
+    public DialingTable() {}
+
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurantId(Long restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public RestTable() {}
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Integer getNum() {
         return num;

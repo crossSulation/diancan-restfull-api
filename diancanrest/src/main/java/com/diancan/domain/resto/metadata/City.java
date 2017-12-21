@@ -11,7 +11,7 @@ import java.util.Set;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long cityId;
+    private  Long id;
 
     @OneToMany(mappedBy = "cityId",cascade = CascadeType.ALL,targetEntity = County.class,fetch = FetchType.LAZY)
     private Set<County> counties = new HashSet<County>();
@@ -31,6 +31,7 @@ public class City {
     @Column(nullable = false,length = 10)
     private String zipCode;
 
+    @Column(name="descInfo")
     private String desc;
 
     private String descCN;
@@ -42,7 +43,7 @@ public class City {
 
     public Set<Address> getAddresses() {
         for(Address addr: addresses) {
-            addr.setCityId(cityId);
+            addr.setCityId(id);
         }
         return addresses;
     }
@@ -62,7 +63,7 @@ public class City {
 
     public Set<County> getCounties() {
         for(County county : counties) {
-            county.setCityId(cityId);
+            county.setCityId(id);
         }
         return counties;
     }

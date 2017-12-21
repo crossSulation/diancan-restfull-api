@@ -12,15 +12,15 @@ import java.util.Set;
 public class Province {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long provinceId;
+    private Long id;
     @Column(nullable = false,length = 10)
     private String  code;
 
     @OneToMany(mappedBy = "provinceId",cascade = CascadeType.ALL,targetEntity = City.class,fetch = FetchType.LAZY)
-    private Set<City> cities =new HashSet<>();
+    private Set<City> cities =new HashSet<City>();
 
     @OneToMany(mappedBy = "provinceId",cascade = CascadeType.ALL,targetEntity = Address.class,fetch = FetchType.LAZY)
-    private Set<Address> addresses =new HashSet<>();
+    private Set<Address> addresses =new HashSet<Address>();
 
     @Column(nullable = false,length = 50,unique = true)
     private String name;
@@ -31,6 +31,7 @@ public class Province {
     @Column(unique = true)
     private String nameEN;
 
+    @Column(name="descInfo")
     private String desc;
 
     private String descCN;
@@ -42,7 +43,7 @@ public class Province {
 
     public Set<Address> getAddresses() {
         for(Address addr : addresses) {
-            addr.setProvinceId(provinceId);
+            addr.setProvinceId(id);
         }
         return addresses;
     }
@@ -61,7 +62,7 @@ public class Province {
 
     public Set<City> getCities() {
         for(City city : cities) {
-            city.setProvinceId(provinceId);
+            city.setProvinceId(id);
         }
         return cities;
     }
