@@ -1,10 +1,13 @@
 package com.diancan.domain.resto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 // 餐桌
-@Entity(name="dialing_table")
+@Entity
+@Table(name="dialing_table")
 public class DialingTable {
     @Id
     @GeneratedValue
@@ -20,7 +23,36 @@ public class DialingTable {
     @ManyToOne
     private Restaurant restaurant;
 
+    @OneToMany(mappedBy = "dialingTableRecipe",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Recipe> recipes = new ArrayList<Recipe>();
+
+    @OneToMany(mappedBy = "dialingTableDrink",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Drink> drinks = new ArrayList<Drink>();
+
     public DialingTable() {}
+
+
+    public List<Drink> getDrinks() {
+        for(Drink drink : drinks) {
+            drink.setId(id);
+        }
+        return drinks;
+    }
+
+    public void setDrinks(List<Drink> drinks) {
+        this.drinks = drinks;
+    }
+
+    public List<Recipe> getRecipes() {
+        for(Recipe recipe : recipes) {
+            recipe.setId(id);
+        }
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+    }
 
     public Restaurant getRestaurant() {
         return restaurant;

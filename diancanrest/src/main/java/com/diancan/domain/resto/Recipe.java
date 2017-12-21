@@ -1,20 +1,38 @@
 package com.diancan.domain.resto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 // 菜色
 @Entity
+@Table(name="recipe")
 public class Recipe {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String name; //菜名
     private Integer price; //单价
     private Integer rank; // 受欢迎度
 
+    @ManyToOne
+    private DialingTable dialingTableRecipe;
+
     public Recipe() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public DialingTable getDialingTableRecipe() {
+        return dialingTableRecipe;
+    }
+
+    public void setDialingTableRecipe(DialingTable dialingTableRecipe) {
+        this.dialingTableRecipe = dialingTableRecipe;
     }
 
     public String getName() {
