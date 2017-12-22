@@ -1,13 +1,14 @@
 package com.diancan.service.resto.metadata;
 
 
-import com.diancan.domain.resto.metadata.County;
 import com.diancan.domain.resto.metadata.Town;
 import com.diancan.respositorys.metadata.TownRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TownServiceImpl implements TownService {
 
     @Autowired

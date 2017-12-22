@@ -4,9 +4,11 @@ import com.diancan.domain.resto.metadata.Street;
 import com.diancan.domain.resto.metadata.Town;
 import com.diancan.respositorys.metadata.StreetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StreetServiceImpl implements  StreetService {
 
     @Autowired

@@ -4,9 +4,11 @@ import com.diancan.domain.resto.metadata.City;
 import com.diancan.domain.resto.metadata.Province;
 import com.diancan.respositorys.metadata.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CityServiceImpl implements  CityService {
 
     @Autowired
@@ -35,5 +37,21 @@ public class CityServiceImpl implements  CityService {
     @Override
     public List<City> findMultipleByGivenCode(String code) {
         return cityRepository.findCitiesByZipCodeIsLike(code);
+    }
+
+    public City addNewOne(City city) {
+        return  cityRepository.save(city);
+    }
+
+    public  City updateOne(City city) {
+        return  cityRepository.save(city);
+    }
+
+    public  void deleteOne(Long id) {
+        cityRepository.delete(id);
+    }
+
+    public void deleteAll() {
+        cityRepository.deleteAll();
     }
 }

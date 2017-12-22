@@ -68,4 +68,21 @@ public class AddressServiceImpl implements AddressService{
     public List<Address> findMultipleByGiveDesc(String desc) {
         return addressRepository.findAddressesByDescContains(desc);
     }
+
+    public  List<Address> findAll() {
+        return  addressRepository.findAll();
+    }
+
+    public  Address addNewOne(Address address) {
+        return  addressRepository.save(address);
+    }
+
+    public void deleteOneById(Long id) {
+         addressRepository.delete(id);
+    }
+
+    public  Address updateOne(Address address) {
+       return   addressRepository.save(address);
+    }
+
 }

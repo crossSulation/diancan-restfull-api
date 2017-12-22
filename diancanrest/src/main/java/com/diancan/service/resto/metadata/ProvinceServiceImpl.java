@@ -3,9 +3,11 @@ package com.diancan.service.resto.metadata;
 import com.diancan.domain.resto.metadata.Province;
 import com.diancan.respositorys.metadata.ProvinceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProvinceServiceImpl implements  ProvinceService {
 
     @Autowired

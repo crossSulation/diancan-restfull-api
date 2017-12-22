@@ -4,9 +4,11 @@ import com.diancan.domain.resto.metadata.City;
 import com.diancan.domain.resto.metadata.County;
 import com.diancan.respositorys.metadata.CountyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CountyServiceImpl implements CountyService {
 
     @Autowired
@@ -35,5 +37,21 @@ public class CountyServiceImpl implements CountyService {
     @Override
     public List<County> findMultipleByGivenCode(String code) {
         return countyRepository.findCountiesByCodeLike(code);
+    }
+
+    public County addNewOne(County county) {
+        return  countyRepository.save(county);
+    }
+
+    public  County updateOne(County county) {
+        return  countyRepository.save(county);
+    }
+
+    public  void deleteOne(Long id) {
+        countyRepository.delete(id);
+    }
+
+    public void deleteAll() {
+        countyRepository.deleteAll();
     }
 }
