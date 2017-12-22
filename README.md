@@ -8,7 +8,7 @@
 * Mysql
 * mongodb
 #steps
-* clone the respository from github
+* clone the respository from github https://github.com/crossSulation/diancan-restfull-api.git
 * cd diancan-restfull-api
 * cd diancanrest
 * mvn install
