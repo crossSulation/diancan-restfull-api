@@ -20,8 +20,8 @@ public class Restaurant implements Serializable {
     //the contact
     private String contactor;
     //resto address
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addr_id")
+    @OneToOne
+    @JoinColumn(name = "address_id")
     private Address address;
     //resto dialnumber
     private String restodialnumber;

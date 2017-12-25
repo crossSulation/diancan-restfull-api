@@ -17,6 +17,11 @@ public class CountyController {
     @Autowired
     CountyServiceImpl countyService;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @ApiOperation(value = "get county by given name")
     @ApiImplicitParam(name = "id",value = "id",dataType = "Long", paramType="path")
     @GetMapping(path = "/{id}")
@@ -25,6 +30,21 @@ public class CountyController {
         return  countyService.findOneByGivenId(id);
     }
 
+    /**
+     *
+     * @return
+     */
+    @ApiOperation(value = "get all counties")
+    @GetMapping
+    public List<County> getAll() {
+        return countyService.findAll();
+    }
+
+    /**
+     *
+     * @param name
+     * @return
+     */
     @ApiOperation(value = "get county by given name")
     @ApiImplicitParam(name = "name",value = "name",dataType = "String", paramType="path")
     @GetMapping(path = "/name/{name}")
@@ -32,6 +52,11 @@ public class CountyController {
         return  countyService.findMultipleByGivenName(name);
     }
 
+    /**
+     *
+     * @param code
+     * @return
+     */
     @ApiOperation(value = "get county by given code")
     @ApiImplicitParam(name = "code",value = "code",dataType = "String", paramType="path")
     @GetMapping(path = "/code/{code}")
@@ -39,6 +64,11 @@ public class CountyController {
         return  countyService.findMultipleByGivenCode(code);
     }
 
+    /**
+     *
+     * @param cityId
+     * @return
+     */
     @ApiOperation(value = "get county by given cityId")
     @ApiImplicitParam(name = "cityId",value = "cityId",dataType = "String", paramType="path")
     @GetMapping(path = "/city/{cityId}")
@@ -46,6 +76,11 @@ public class CountyController {
         return  countyService.findMultipleByGivenCity(cityId);
     }
 
+    /**
+     *
+     * @param desc
+     * @return
+     */
     @ApiOperation(value = "get county by given descInfo")
     @ApiImplicitParam(name = "desc",value = "desc",dataType = "String", paramType="path")
     @GetMapping(path = "/desc/{desc}")
@@ -95,7 +130,7 @@ public class CountyController {
     /**
      *
      */
-    @ApiOperation(value = "delete one by id")
+    @ApiOperation(value = "delete all")
     @DeleteMapping
     public  void deleteAll() {
         countyService.deleteAll();

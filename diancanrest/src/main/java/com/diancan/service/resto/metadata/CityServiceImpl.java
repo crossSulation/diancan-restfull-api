@@ -24,6 +24,9 @@ public class CityServiceImpl implements  CityService {
         return cityRepository.findCitiesByProvinceId(provinceId);
     }
 
+    public  List<City> findAll() {
+        return  cityRepository.findAll();
+    }
     @Override
     public List<City> findMultipleByGivenName(String name) {
         return cityRepository.findCitiesByNameIsLike(name);

@@ -19,6 +19,9 @@ public class TownServiceImpl implements TownService {
         return townRepository.findOne(id);
     }
 
+    public  List<Town> findAll() {
+        return townRepository.findAll();
+    }
     @Override
     public List<Town> findMultipleByGivenCounty(Long countyId) {
         return townRepository.findTownsByCountyId(countyId);
@@ -37,5 +40,21 @@ public class TownServiceImpl implements TownService {
     @Override
     public List<Town> findMultipleByGivenDesc(String desc) {
         return townRepository.findTownsByDescLike(desc);
+    }
+
+    public Town addNewOne(Town town) {
+       return townRepository.save(town);
+    }
+
+    public Town updateOne(Town town) {
+        return  townRepository.save(town);
+    }
+
+    public  void  deleteAll() {
+        townRepository.deleteAll();
+    }
+
+    public void deleteOneById(Long id) {
+        townRepository.delete(id);
     }
 }

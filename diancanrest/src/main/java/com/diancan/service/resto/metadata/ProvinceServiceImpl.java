@@ -18,6 +18,9 @@ public class ProvinceServiceImpl implements  ProvinceService {
         return provinceRepository.findOne(id);
     }
 
+    public List<Province> findAll() {
+        return provinceRepository.findAll();
+    }
     @Override
     public List<Province> findMultipleByGivenName(String name) {
         return provinceRepository.findProvincesByNameLike(name);
@@ -31,5 +34,21 @@ public class ProvinceServiceImpl implements  ProvinceService {
     @Override
     public List<Province> findMultipleByGivenCode(String code) {
         return provinceRepository.findProvincesByCodeLike(code);
+    }
+
+    public Province addNewOne(Province province) {
+        return provinceRepository.save(province);
+    }
+
+    public Province updateOne(Province province) {
+        return  provinceRepository.save(province);
+    }
+
+    public void deleteOneById(Long id) {
+        provinceRepository.delete(id);
+    }
+
+    public void deleteAll() {
+        provinceRepository.deleteAll();
     }
 }

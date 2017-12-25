@@ -31,6 +31,15 @@ public class CityController {
 
     /**
      *
+     * @return
+     */
+    @ApiOperation(value = "get all cities")
+    @GetMapping
+    public List<City> getAll() {
+        return  cityService.findAll();
+    }
+    /**
+     *
      * @param provinceId
      * @return
      */

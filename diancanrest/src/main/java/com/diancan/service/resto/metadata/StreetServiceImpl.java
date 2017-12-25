@@ -19,6 +19,9 @@ public class StreetServiceImpl implements  StreetService {
         return streetRepository.findOne(id);
     }
 
+    public List<Street> findAll() {
+        return streetRepository.findAll();
+    }
     @Override
     public List<Street> findMultipleByGivenName(String name) {
         return streetRepository.findStreetsByNameLike(name);
@@ -37,5 +40,21 @@ public class StreetServiceImpl implements  StreetService {
     @Override
     public List<Street> findMultipleByGivenTown(Long townId) {
         return streetRepository.findStreetsByTownId(townId);
+    }
+
+    public Street addNewOne(Street street) {
+        return  streetRepository.save(street);
+    }
+
+    public  Street updateOne(Street street) {
+        return  streetRepository.save(street);
+    }
+
+    public void deleteOneById(Long id) {
+        streetRepository.delete(id);
+    }
+
+    public  void deleteAll() {
+        streetRepository.deleteAll();
     }
 }
