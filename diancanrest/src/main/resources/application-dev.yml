@@ -22,3 +22,10 @@ spring:
       ddl-auto: create-drop
     show-sql: true
   # logging
+mongoConfig:
+  fileDBName: "fs.files"
+  loggingDBName: "logging"
+           port: 27017
+       userName: ""
+       password: ""
+    userCluster: false
