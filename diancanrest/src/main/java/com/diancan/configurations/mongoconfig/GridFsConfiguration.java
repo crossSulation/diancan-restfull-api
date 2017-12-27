@@ -3,9 +3,10 @@ package com.diancan.configurations.mongoconfig;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 
 @Configuration
 public class GridFsConfiguration extends AbstractMongoConfiguration {
@@ -21,5 +22,10 @@ public class GridFsConfiguration extends AbstractMongoConfiguration {
     @Override
     public Mongo mongo() throws Exception {
         return new MongoClient(mongoAddr);
+    }
+
+    @Bean
+    public GridFsTemplate gridFsTemplate() throws Exception {
+        return  new GridFsTemplate(mongoDbFactory(),mappingMongoConverter());
     }
 }
