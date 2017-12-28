@@ -21,5 +21,12 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
-
+# custom config
+mongoConfig:
+  fileDBName: "fs.files"
+  loggingDBName: "logging"
+           port: 27017
+       userName: ""
+       password: ""
+    userCluster: false
 
