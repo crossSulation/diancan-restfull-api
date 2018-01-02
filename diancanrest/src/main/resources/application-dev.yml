@@ -23,9 +23,14 @@ spring:
     show-sql: true
   # logging
 mongoConfig:
-  fileDBName: "fs.files"
-  loggingDBName: "logging"
-           port: 27017
-       userName: ""
-       password: ""
-    userCluster: false
+  fileDB:
+    name: "diancan-GridFS"
+    port: 27017
+    userName: ""
+    password: ""
+  loggingDB:
+    name: "logging"
+    port: 27017
+    userName: ""
+    password: ""
+  userCluster: false

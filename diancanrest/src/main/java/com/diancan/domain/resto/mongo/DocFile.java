@@ -1,12 +1,13 @@
 package com.diancan.domain.resto.mongo;
 
+import com.mongodb.DBObject;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "fs.files")
-public class ImageFile {
+public class DocFile {
 
     @Id
     private ObjectId id;
@@ -17,19 +18,28 @@ public class ImageFile {
 
     private Long size;
 
-    private ByteChunk[] contents;
+    private byte[] data;
 
     private String path;
 
-    private String uploadDate;
+    private Long uploadDate;
 
     private String modifiedBy;
 
-    public ImageFile() {
+    private DBObject metaData;
+
+    public DocFile() {
     }
 
+    public DBObject getMetaData() {
+        return metaData;
+    }
 
-    public String getFileName() {
+    public void setMetaData(DBObject metaData) {
+        this.metaData = metaData;
+    }
+
+    public String   getFileName() {
         return fileName;
     }
 
@@ -37,11 +47,11 @@ public class ImageFile {
         this.fileName = fileName;
     }
 
-    public String getUploadDate() {
+    public Long getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(String uploadDate) {
+    public void setUploadDate(Long uploadDate) {
         this.uploadDate = uploadDate;
     }
 
@@ -69,12 +79,12 @@ public class ImageFile {
         this.size = size;
     }
 
-    public ByteChunk[] getContents() {
-        return contents;
+    public byte[] getData() {
+        return data;
     }
 
-    public void setContents(ByteChunk[] contents) {
-        this.contents = contents;
+    public void setData(byte[] contents) {
+        this.data = contents;
     }
 
     public String getPath() {
