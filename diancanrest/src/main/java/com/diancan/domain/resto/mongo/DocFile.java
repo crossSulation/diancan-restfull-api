@@ -6,11 +6,13 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.swing.text.html.HTMLDocument;
+
 @Document(collection = "fs.files")
 public class DocFile {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     private String fileName;
 
@@ -55,11 +57,11 @@ public class DocFile {
         this.uploadDate = uploadDate;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
