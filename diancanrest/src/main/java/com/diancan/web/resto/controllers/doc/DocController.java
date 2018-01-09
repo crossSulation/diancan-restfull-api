@@ -86,10 +86,6 @@ public class DocController {
      * @return
      */
     @ApiOperation("delete one file by given id")
-    @ApiImplicitParams({
-            @ApiImplicitParam(value = "docId",required = true,dataType = "String",paramType = "path"),
-            @ApiImplicitParam(value = "username",required = true,dataType = "String",paramType = "header")
-    })
     @DeleteMapping("/{docId}")
     public ResponseEntity<DocResponse> deleteOne(
             @PathVariable(value = "docId",name = "docId") String docId,

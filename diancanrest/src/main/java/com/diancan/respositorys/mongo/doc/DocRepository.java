@@ -11,13 +11,15 @@ import java.util.List;
 
 public interface DocRepository extends MongoRepository<Doc,String> {
 
-    @Query(value = "{$eq: {'_id' : ?0}}")
-    Doc findOneById(String id);
+    @Query(value = "{'fileId' : {'$eq' : ?0}}")
+    Doc findOneByFileId(String fileId);
 
-    @DeleteQuery(value = "{$in: {'_id' : ?0}}")
+    @DeleteQuery(value = "{'_id': {'$in' : ?0}}")
     void deleteMutipleByGivenIds(List<String> ids);
 
     @Query(value = "{$or: {filename: {$regex: ?0},{modify: {$regex: ?1}}}}")
     Page<Doc> findAllBy(String filename , String modify, Pageable pageable);
+
+    void deleteDocByFileId(String fileId);
 }
 

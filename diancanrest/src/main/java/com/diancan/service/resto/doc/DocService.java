@@ -10,6 +10,7 @@ public interface DocService {
     public Doc findOneById(String id);
 
     public List<Doc> findAll();
+
     public void deleteOneById(String id);
 
     public  void deleteMultipleByGiveIds(List<String> ids);

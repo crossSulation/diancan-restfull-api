@@ -27,12 +27,12 @@ public class DocServiceImpl implements DocService {
 
     @Override
     public Doc findOneById(String id) {
-        return docRepository.findOneById(id);
+        return docRepository.findOneByFileId(id);
     }
 
     @Override
     public void deleteOneById(String id) {
-        docRepository.delete(id);
+        docRepository.deleteDocByFileId(id);
         fileService.deleteOneFileById(id);
     }
 
@@ -53,7 +53,7 @@ public class DocServiceImpl implements DocService {
 
     @Override
     public GridFSDBFile downloadOneFile(String id) {
-        Doc file = docRepository.findOneById(id);
+        Doc file = docRepository.findOneByFileId(id);
         if(file==null) {
             return null;
         }
@@ -101,7 +101,7 @@ public class DocServiceImpl implements DocService {
     }
 
     public Doc updateDoc(String docId,MultipartFile file,String username,String password) throws Exception {
-        Doc doc = docRepository.findOneById(docId);
+        Doc doc = docRepository.findOneByFileId(docId);
         if(doc==null) {
             throw new Exception("the doc is not existed in db!");
         }
@@ -160,7 +160,7 @@ public class DocServiceImpl implements DocService {
         docResponse.setFileName(doc.getFileName());
         docResponse.setFileSize(doc.getSize());
         docResponse.setFileType(doc.getContentType());
-        docResponse.setFileId(doc.getId());
+        docResponse.setFileId(doc.getFileId());
         return  docResponse;
     }
 
@@ -182,7 +182,7 @@ public class DocServiceImpl implements DocService {
             docResponse.setFileName(doc.getFileName());
             docResponse.setFileSize(doc.getSize());
             docResponse.setFileType(doc.getContentType());
-            docResponse.setFileId(doc.getId());
+            docResponse.setFileId(doc.getFileId());
             docResponses.add(docResponse);
         }
         return  docResponses;
