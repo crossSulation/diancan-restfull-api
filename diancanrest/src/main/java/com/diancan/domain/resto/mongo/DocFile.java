@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class DocFile {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     private String fileName;
 
@@ -55,11 +55,11 @@ public class DocFile {
         this.uploadDate = uploadDate;
     }
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
