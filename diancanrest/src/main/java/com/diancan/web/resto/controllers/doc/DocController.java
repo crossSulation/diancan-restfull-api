@@ -43,6 +43,10 @@ public class DocController {
             @PathVariable(value = "docId",name = "docId") String docId,
             @RequestHeader(value = "username",required = false) String useranme) {
         Doc doc =docService.findOneById(docId);
+        if(doc==null) {
+            DocResponse docResponse =new DocResponse(HttpStatus.BAD_REQUEST.value(),"the file you specific is not exits!");
+            return ResponseEntity.badRequest().body(docResponse);
+        }
         DocResponse docResponse =docService.mapSingleDocToResponse(doc,HttpStatus.OK,"file is existed!");
         return ResponseEntity.ok(docResponse);
     }
