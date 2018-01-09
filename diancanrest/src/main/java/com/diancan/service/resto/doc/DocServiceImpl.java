@@ -1,71 +1,190 @@
 package com.diancan.service.resto.doc;
 
-import com.diancan.domain.resto.mongo.DocFile;
-import com.diancan.respositorys.mongo.FileRepository;
+import com.diancan.domain.resto.mongo.Doc;
+import com.diancan.respositorys.mongo.doc.DocRepository;
+import com.diancan.web.resto.controllers.doc.DocResponse;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mongodb.gridfs.GridFSDBFile;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 public class DocServiceImpl implements DocService {
 
     @Autowired
-    GridFsTemplate gridFsTemplate;
+    FileService fileService;
 
     @Autowired
-    FileRepository fileRepository;
+    DocRepository docRepository;
 
     @Override
-    public DocFile findOneById(String id) {
-        return fileRepository.findOneById(id);
+    public Doc findOneById(String id) {
+        return docRepository.findOneById(id);
     }
 
     @Override
     public void deleteOneById(String id) {
-        fileRepository.delete(id);
-        gridFsTemplate.delete(new Query(Criteria.where("_id").is(id)));
+        docRepository.delete(id);
+        fileService.deleteOneFileById(id);
     }
 
     @Override
     public void deleteMultipleByGiveIds(List<String> ids) {
-        fileRepository.deleteDocFilesByIdIn(ids);
-        gridFsTemplate.delete(new Query(Criteria.where("_id").in(ids)));
+        docRepository.deleteMutipleByGivenIds(ids);
+       fileService.deleteMultipleFile(ids);
     }
 
     @Override
-    public void uploadOneFile(DocFile file) {
-      fileRepository.save(file);
-      InputStream inputStream = new ByteArrayInputStream(file.getData());
-      gridFsTemplate.store(inputStream,file.getFileName(),file.getContentType(),file.getMetaData());
+    public void uploadOneFile(Doc file) {
+
+        InputStream inputStream = new ByteArrayInputStream(file.getData());
+        String newFileId= fileService.createFile(inputStream,file.getFileName(),file.getContentType(),file.getMetaData());
+        file.setFileId(newFileId);
+        docRepository.save(file);
     }
 
     @Override
     public GridFSDBFile downloadOneFile(String id) {
-        DocFile file =fileRepository.findOneById(id);
+        Doc file = docRepository.findOneById(id);
         if(file==null) {
             return null;
         }
-       return gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
+       return fileService.getOneFileById(id);
     }
 
     @Override
-    public void uploadMultipleFile(List<DocFile> files) {
-        for(DocFile file : files) {
+    public void uploadMultipleFile(List<Doc> files) {
+        String newFileId;
+        for(Doc file : files) {
             InputStream inputStream = new ByteArrayInputStream(file.getData());
-            gridFsTemplate.store(inputStream,file.getFileName(),file.getContentType(),file.getMetaData());
+            newFileId=fileService.createFile(inputStream,file.getFileName(),file.getContentType(),file.getMetaData());
+            file.setFileId(newFileId);
         }
-      fileRepository.save(files);
+      docRepository.save(files);
     }
 
     @Override
-    public List<DocFile> findAll() {
-        return (List<DocFile>) fileRepository.findAll();
+    public List<Doc> findAll() {
+        return (List<Doc>) docRepository.findAll();
+    }
+
+    /**
+     *
+     * @param file
+     * @param username
+     * @param password
+     * @return
+     * @throws Exception
+     */
+    public Doc createDoc(MultipartFile file, String username, String password) throws Exception {
+        Doc doc = new Doc();
+        DBObject meteData = new BasicDBObject();
+        meteData.put("user",username);
+        meteData.put("pwd",password);
+        doc.setContentType(file.getContentType());
+        doc.setFileName(file.getOriginalFilename());
+        doc.setModifiedBy(username);
+        doc.setUploadDate(new Date(System.currentTimeMillis()));
+        doc.setSize(file.getSize());
+        doc.setData(file.getBytes());
+        doc.setMetaData(meteData);
+
+        return doc;
+    }
+
+    public Doc updateDoc(String docId,MultipartFile file,String username,String password) throws Exception {
+        Doc doc = docRepository.findOneById(docId);
+        if(doc==null) {
+            throw new Exception("the doc is not existed in db!");
+        }
+        DBObject meteData = new BasicDBObject();
+        meteData.put("user",username);
+        meteData.put("pwd",password);
+        doc.setContentType(file.getContentType());
+        doc.setFileName(file.getOriginalFilename());
+        doc.setModifiedBy(username);
+        doc.setUploadDate(new Date(System.currentTimeMillis()));
+        doc.setSize(file.getSize());
+        doc.setData(file.getBytes());
+        doc.setMetaData(meteData);
+
+        return  doc;
+    }
+
+    /**
+     *
+     * @param files
+     * @param username
+     * @param password
+     * @return
+     * @throws Exception
+     */
+    public List<Doc> createMultipleDocs(List<MultipartFile> files, String username, String password) throws Exception {
+        List<Doc> docs = new ArrayList<>();
+
+        for(MultipartFile file : files) {
+           Doc doc = new Doc();
+            DBObject meteData = new BasicDBObject();
+            meteData.put("user",username);
+            meteData.put("pwd",password);
+            doc.setContentType(file.getContentType());
+            doc.setFileName(file.getOriginalFilename());
+            doc.setModifiedBy(username);
+            doc.setUploadDate(new Date(System.currentTimeMillis()));
+            doc.setSize(file.getSize());
+            doc.setData(file.getBytes());
+            doc.setMetaData(meteData);
+        }
+        return docs;
+    }
+
+    /**
+     *
+     * @param doc
+     * @param status
+     * @param message
+     * @return
+     */
+    public DocResponse mapSingleDocToResponse(Doc doc, HttpStatus status, String message) {
+        DocResponse docResponse = new DocResponse(status.value(),message);
+        docResponse.setFileCreated(doc.getUploadDate());
+        docResponse.setFileModifiedBy(doc.getModifiedBy());
+        docResponse.setFileName(doc.getFileName());
+        docResponse.setFileSize(doc.getSize());
+        docResponse.setFileType(doc.getContentType());
+        docResponse.setFileId(doc.getId());
+        return  docResponse;
+    }
+
+    /**
+     *
+     * @param docs
+     * @param status
+     * @param message
+     * @return
+     */
+    public  List<DocResponse> mapMultipleDocsToResponse(List<Doc> docs, HttpStatus status, String message) {
+
+        List<DocResponse> docResponses = new ArrayList<DocResponse>();
+
+        for(Doc doc : docs) {
+            DocResponse docResponse = new DocResponse(status.value(),message);
+            docResponse.setFileCreated(doc.getUploadDate());
+            docResponse.setFileModifiedBy(doc.getModifiedBy());
+            docResponse.setFileName(doc.getFileName());
+            docResponse.setFileSize(doc.getSize());
+            docResponse.setFileType(doc.getContentType());
+            docResponse.setFileId(doc.getId());
+            docResponses.add(docResponse);
+        }
+        return  docResponses;
     }
 }

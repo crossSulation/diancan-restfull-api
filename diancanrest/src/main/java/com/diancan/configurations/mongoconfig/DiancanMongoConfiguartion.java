@@ -5,29 +5,28 @@ import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.diancan.respositorys.mongo")
-public class DiancanMongoConfiguration  extends AbstractMongoConfiguration{
+@EnableMongoRepositories("com.diancan.respositorys.mongo")
+public class DiancanMongoConfiguartion extends AbstractMongoConfiguration {
 
-    @Value("${spring.data.mongodb.url}")
-    private String mongoAddr;
+    @Value("${mongoConfig.businessDB.host}")
+    private String mongohost;
+
+    @Value("${mongoConfig.businessDB.port}")
+    private int port;
+
+    @Value("${mongoConfig.businessDB.name}")
+    private String dbName;
 
     @Override
     protected String getDatabaseName() {
-        return "diancan";
+        return dbName;
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient();
+        return new MongoClient(mongohost,port);
     }
-
-    public MongoTemplate mongoTemplate() throws  Exception {
-        return  new MongoTemplate(mongoDbFactory(),mappingMongoConverter());
-    }
-
-
 }

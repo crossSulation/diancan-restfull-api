@@ -4,33 +4,44 @@ import com.mongodb.DBObject;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.swing.text.html.HTMLDocument;
+import java.util.Date;
 
-@Document(collection = "fs.files")
-public class DocFile {
+@Document(collection = "sys_docs")
+public class Doc {
 
     @Id
     private String id;
 
+    @Indexed(unique = true,name = "doc_fieldId")
     private String fileName;
-
     private String contentType;
+    private String modifiedBy;
 
     private Long size;
 
     private byte[] data;
 
+    private String fileId;
+
     private String path;
 
-    private Long uploadDate;
-
-    private String modifiedBy;
+    private Date uploadDate;
 
     private DBObject metaData;
 
-    public DocFile() {
+    public Doc() {
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 
     public DBObject getMetaData() {
@@ -49,11 +60,11 @@ public class DocFile {
         this.fileName = fileName;
     }
 
-    public Long getUploadDate() {
+    public Date getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(Long uploadDate) {
+    public void setUploadDate(Date uploadDate) {
         this.uploadDate = uploadDate;
     }
 

@@ -16,7 +16,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://127.0.0.1:27017
-      database: logging
+      database: diancan
+      grid-fs-database: diancan-GridFS
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -29,12 +30,20 @@ spring:
   # logging
 mongoConfig:
   fileDB:
+    host: 127.0.0.1
     name: "diancan-GridFS"
     port: 27017
     userName: ""
     password: ""
   loggingDB:
+    host: 127.0.0.1
     name: "logging"
+    port: 27017
+    userName: ""
+    password: ""
+  businessDB:
+    host: 127.0.0.1
+    name: "diancan"
     port: 27017
     userName: ""
     password: ""

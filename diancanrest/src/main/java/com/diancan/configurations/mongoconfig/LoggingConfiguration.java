@@ -10,20 +10,25 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories("com.diancan.respositorys.mongo")
 public class LoggingConfiguration extends AbstractMongoConfiguration {
 
-    @Value("${spring.data.mongodb.url}")
-    private String mongoAddr;
+    @Value("${mongoConfig.loggingDB.host}")
+    private String mongohost;
+
+    @Value("${mongoConfig.loggingDB.port}")
+    private int port;
+
+    @Value("${mongoConfig.loggingDB.name}")
+    private String dbName;
 
     @Override
     protected String getDatabaseName() {
-        return "logging";
+        return  dbName;
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient(mongoAddr);
+        return new MongoClient(mongohost,port);
     }
 
     @Bean
