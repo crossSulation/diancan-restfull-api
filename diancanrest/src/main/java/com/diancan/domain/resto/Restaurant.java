@@ -16,7 +16,7 @@ public class Restaurant implements Serializable {
     @GeneratedValue
     private Long id;
     //the Image info of the resto
-    private String restoImage;
+    private String restoImageId;
     //the contact
     private String contactor;
     //resto address
@@ -64,11 +64,11 @@ public class Restaurant implements Serializable {
     }
 
     public String getRestoImage() {
-        return restoImage;
+        return restoImageId;
     }
 
-    public void setRestoImage(String restoImage) {
-        this.restoImage = restoImage;
+    public void setRestoImage(String restoImageId) {
+        this.restoImageId = restoImageId;
     }
 
     public String getContactor() {

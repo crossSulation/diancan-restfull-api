@@ -1,8 +1,7 @@
 package com.diancan.domain.resto;
 
-import com.diancan.domain.resto.constants.DrinkCategory;
 import com.diancan.domain.resto.constants.DrinkTeste;
-
+import com.diancan.domain.resto.DrinkCategory;
 import javax.persistence.*;
 
 //饮料
@@ -16,9 +15,10 @@ public class Drink  {
     private String name; //名称
     private Integer price; //单价
     private Integer rank; // 受欢迎度
-
+    private String dinkImageId;// 饮料图片id
     private DrinkTeste drinkTeste; // 口味
 
+    @ManyToOne
     private DrinkCategory drinkCategory;
 
     private String vendor; //生产商
@@ -30,6 +30,15 @@ public class Drink  {
     private DialingTable dialingTableDrink;
 
     public Drink() {
+    }
+
+
+    public String getDinkImageId() {
+        return dinkImageId;
+    }
+
+    public void setDinkImageId(String dinkImageId) {
+        this.dinkImageId = dinkImageId;
     }
 
     public String getName() {

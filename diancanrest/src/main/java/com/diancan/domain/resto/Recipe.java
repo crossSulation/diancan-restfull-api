@@ -12,11 +12,30 @@ public class Recipe {
     private String name; //菜名
     private Integer price; //单价
     private Integer rank; // 受欢迎度
-
+    private String RecipleImageId;// 菜品图片
     @ManyToOne
     private DialingTable dialingTableRecipe;
 
+    @ManyToOne
+    private RecipeCategory recipeCategory;
+
     public Recipe() {
+    }
+
+    public RecipeCategory getRecipeCategory() {
+        return recipeCategory;
+    }
+
+    public void setRecipeCategory(RecipeCategory recipeCategory) {
+        this.recipeCategory = recipeCategory;
+    }
+
+    public String getRecipleImageId() {
+        return RecipleImageId;
+    }
+
+    public void setRecipleImageId(String recipleImageId) {
+        RecipleImageId = recipleImageId;
     }
 
     public Long getId() {
