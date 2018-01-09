@@ -6,6 +6,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.swing.text.html.HTMLDocument;
+
 @Document(collection = "fs.files")
 public class DocFile {
 

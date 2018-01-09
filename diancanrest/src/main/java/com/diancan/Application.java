@@ -8,7 +8,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.diancan.configurations.mongoconfig","com.diancan.configurations","com.diancan"})
 @EnableAutoConfiguration
 public class Application {
     public  static  void main(String ...args) {

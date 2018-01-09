@@ -1,8 +1,7 @@
 package com.diancan.respositorys.mongo;
 
 import com.diancan.domain.resto.mongo.DocFile;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.DeleteQuery;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
