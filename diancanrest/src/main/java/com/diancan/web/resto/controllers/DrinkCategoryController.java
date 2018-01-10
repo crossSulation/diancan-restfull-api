@@ -2,9 +2,11 @@ package com.diancan.web.resto.controllers;
 
 import com.diancan.domain.resto.DrinkCategory;
 import com.diancan.service.resto.DrinkCategoryServiceImpl;
+import com.diancan.web.resto.controllers.common.CommonResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,56 +55,59 @@ public class DrinkCategoryController {
 
     @ApiOperation("delete drink categories by code is")
     @DeleteMapping("/code/{code}")
-    public ResponseEntity deleteOneByCode(
+    public ResponseEntity<CommonResponse> deleteOneByCode(
             @PathVariable("code") String code) {
         drinkCategoryService.deleteOneByCode(code);
-
-        return  ResponseEntity.ok().body(null);
+        CommonResponse response = new CommonResponse(HttpStatus.OK.value(),"the resource has been deleted successfully!");
+        return  ResponseEntity.ok(response);
     }
 
     @ApiOperation("delete drink categories by id is")
     @DeleteMapping("/{id}")
-    public  ResponseEntity deleteOneById(
+    public  ResponseEntity<CommonResponse> deleteOneById(
             @PathVariable("id") Long id) {
         drinkCategoryService.deleteOneById(id);
-        return  ResponseEntity.ok().body(null);
+        CommonResponse response = new CommonResponse(HttpStatus.OK.value(),"the resource has been deleted successfully!");
+        return  ResponseEntity.ok(response);
     }
 
     @ApiOperation("delete multiple drink categories by name like ")
     @DeleteMapping("/byName")
-    public ResponseEntity deleteMultipleByNameMatch(
+    public ResponseEntity<CommonResponse> deleteMultipleByNameMatch(
             @RequestParam("name") String name,
             @RequestParam("nameCn") String nameCn,
             @RequestParam("nameEn") String nameEn) {
          drinkCategoryService.deleteMutipleByNameMatch(name,nameEn,nameCn);
-        return  ResponseEntity.ok().body(null);
+        CommonResponse response = new CommonResponse(HttpStatus.OK.value(),"the resource has been deleted successfully!");
+        return  ResponseEntity.ok(response);
     }
 
     @ApiOperation("delete multiple drink categories by name like ")
     @DeleteMapping("/byDescInfo")
-    public ResponseEntity deleteMultipleByDescatch(
+    public ResponseEntity<CommonResponse> deleteMultipleByDescatch(
             @RequestParam("descInfo") String descInfo,
             @RequestParam("descCn") String descCn,
             @RequestParam("descEn") String descEn) {
         drinkCategoryService.deleteMultipeByDescInfoMatch(descInfo,descCn,descEn);
-        return  ResponseEntity.ok().body(null);
+        CommonResponse response = new CommonResponse(HttpStatus.OK.value(),"the resource has been deleted successfully!");
+        return  ResponseEntity.ok(response);
     }
 
     @ApiOperation("update one by given id ")
     @PutMapping("/{id}")
-    public  ResponseEntity updateOne(
+    public  ResponseEntity<CommonResponse> updateOne(
             @PathVariable("id") Long id,
             @RequestBody() DrinkCategory drinkCategory) {
          drinkCategoryService.updateOne(id,drinkCategory);
-        return  ResponseEntity.ok().body(null);
+        CommonResponse response = new CommonResponse(HttpStatus.OK.value(),"the resource has been updated successfully!");
+        return  ResponseEntity.ok(response);
     }
 
     @ApiOperation("add new one")
     @PostMapping
-    public  ResponseEntity addNewOne(
+    public  ResponseEntity<DrinkCategory> addNewOne(
             @RequestBody() DrinkCategory drinkCategory) {
-       DrinkCategory newdrinkC = drinkCategoryService.addNewOne(drinkCategory);
-
-        return  ResponseEntity.ok().body(newdrinkC);
+           DrinkCategory newdrinkC = drinkCategoryService.addNewOne(drinkCategory);
+        return  ResponseEntity.ok(newdrinkC);
     }
 }
