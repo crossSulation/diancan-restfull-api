@@ -29,6 +29,11 @@ public class DrinkCategoryServiceImpl implements DrinkCategoryService {
     }
 
     @Override
+    public DrinkCategory findOneByCode(String code) {
+        return drinkCategoryRepository.findDrinkCategoryByCodeIs(code);
+    }
+
+    @Override
     public void deleteMutipleByNameMatch(String name, String nameEn, String nameCn) {
         drinkCategoryRepository.deleteDrinkCategoriesByNameMatche(name,nameEn,nameCn);
     }
@@ -36,6 +41,11 @@ public class DrinkCategoryServiceImpl implements DrinkCategoryService {
     @Override
     public void deleteMultipeByDescInfoMatch(String descInfo, String descEn, String descCn) {
       drinkCategoryRepository.deleteDrinkCategoriesByDescriptionMatche(descInfo,descCn,descEn);
+    }
+
+    @Override
+    public void deleteOneById(Long id) {
+        drinkCategoryRepository.delete(id);
     }
 
     @Override

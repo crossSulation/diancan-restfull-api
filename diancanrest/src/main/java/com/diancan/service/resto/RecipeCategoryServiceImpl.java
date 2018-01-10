@@ -19,6 +19,11 @@ public class RecipeCategoryServiceImpl implements RecipeCategoryService {
     }
 
     @Override
+    public List<RecipeCategory> getAll() {
+        return recipeCategoryRepository.findAll();
+    }
+
+    @Override
     public List<RecipeCategory> getMultipeByNameMatch(String name, String nameCn, String nameEn) {
         return recipeCategoryRepository.findRecipeCategoriesByNameMatch(name,nameCn,nameEn);
     }

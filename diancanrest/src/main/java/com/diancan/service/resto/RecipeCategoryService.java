@@ -21,4 +21,6 @@ public interface RecipeCategoryService {
     RecipeCategory updateOne(Long id,RecipeCategory recipeCategory);
 
     RecipeCategory addNewOne(RecipeCategory recipeCategory);
+
+    List<RecipeCategory> getAll();
 }

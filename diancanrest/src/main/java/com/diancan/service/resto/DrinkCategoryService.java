@@ -21,4 +21,8 @@ public interface DrinkCategoryService {
     DrinkCategory updateOne(Long id,DrinkCategory drinkCategory);
 
     DrinkCategory addNewOne(DrinkCategory drinkCategory);
+
+    DrinkCategory findOneByCode(String code);
+
+    void deleteOneById(Long id);
 }
