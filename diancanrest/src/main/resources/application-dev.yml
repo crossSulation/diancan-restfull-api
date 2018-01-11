@@ -13,6 +13,7 @@ spring:
     username: root
     password: 123qweASD
     driver-class-name: com.mysql.jdbc.Driver
+    sql-script-encoding: utf-8
   data:
     mongodb:
       uri: mongodb://127.0.0.1:27017
