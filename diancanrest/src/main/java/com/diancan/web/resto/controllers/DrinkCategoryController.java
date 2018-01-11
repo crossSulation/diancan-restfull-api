@@ -106,6 +106,7 @@ public class DrinkCategoryController {
     @ApiOperation("add new one")
     @PostMapping
     public  ResponseEntity<DrinkCategory> addNewOne(
+            @RequestHeader(value = "sm_user",required = false) String sm_user,
             @RequestBody() DrinkCategory drinkCategory) {
            DrinkCategory newdrinkC = drinkCategoryService.addNewOne(drinkCategory);
         return  ResponseEntity.ok(newdrinkC);
