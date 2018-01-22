@@ -2,8 +2,10 @@ package com.diancan.web.resto.controllers.doc;
 
 import com.diancan.domain.resto.mongo.Doc;
 import com.diancan.service.resto.doc.DocServiceImpl;
+import com.drew.metadata.exif.ExifDirectoryBase;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import com.mongodb.gridfs.GridFSDBFile;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -147,5 +150,20 @@ public class DocController {
 
         List<DocResponse> docResponses =docService.mapMultipleDocsToResponse(files,HttpStatus.OK,"the query is successfully!");
         return ResponseEntity.ok(docResponses);
+    }
+
+    @ApiOperation("download file by given id")
+    @GetMapping("/download/{docId}")
+    public ResponseEntity<byte[]> downloadFileByGivenId(
+            @PathVariable("docId") String docId) {
+        GridFSDBFile gridFSDBFile = docService.downloadOneFile(docId);
+
+        ByteArrayOutputStream os  = new ByteArrayOutputStream();
+        try {
+            gridFSDBFile.writeTo(os);
+            return ResponseEntity.ok(os.toByteArray());
+        }catch (IOException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 }
